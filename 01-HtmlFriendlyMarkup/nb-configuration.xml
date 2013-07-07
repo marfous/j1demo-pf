@@ -18,5 +18,6 @@ Any value defined here will override the pom.xml file value but is only applicab
         <netbeans.hint.license>gpl30</netbeans.hint.license>
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
         <org-netbeans-modules-projectapi.jsf_2e_language>Facelets</org-netbeans-modules-projectapi.jsf_2e_language>
+        <netbeans.hint.licensePath>${project.basedir}/licenseheader.txt</netbeans.hint.licensePath>
     </properties>
 </project-shared-configuration>

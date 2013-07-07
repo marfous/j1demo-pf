@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head jsf:id="head">
+        <title>HTML(5) Friendly Markup Samples - Registration Form</title>
+    </head>
+    <body jsf:id="body">
+        <form jsf:id="registrationForm">
+            <p:panel id="panel" header="Registration Form">
+                <p:messages id="messages"/>
+                <table>
+                    <tr>
+                        <td><label jsf:for="name">Name:</label></td>
+                        <td>
+                            <input jsf:id="name" type="text" jsf:value="#{registrationBean.name}">
+                                <f:ajax execute="@this" render="progress"/>
+                            </input>
+                        </td>
+                        <td><p:message for="name" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><label jsf:for="tel">Telephone:</label></td>
+                        <td>
+                            <input jsf:id="tel" type="text" jsf:value="#{registrationBean.tel}">
+                                <f:ajax execute="@this" render="progress"/>
+                            </input>
+                        </td>
+                        <td><p:message for="tel" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><label jsf:for="email">Email:</label></td>
+                        <td>
+                            <input jsf:id="email" type="email" jsf:value="#{registrationBean.email}">
+                                <f:ajax execute="@this" render="progress"/>
+                            </input>
+                        </td>
+                        <td><p:message for="email" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><label jsf:for="progress">Progress:</label></td>
+                        <td colspan="2"><progress jsf:id="progress" value="0" labelTemplate="#{registrationBean.progress / 3 * 100}%" displayOnly="true">#{registrationBean.progress} of 3</progress></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"><input jsf:update="panel" jsf:actionListener="#{registrationBean.savePerson}" type="submit" value="Submit"></input></td>
+                    </tr>
+                </table>
+            </p:panel>
+        </form>
+    </body>
+</html>
+
