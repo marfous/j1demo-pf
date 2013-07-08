@@ -15,7 +15,7 @@
                     <tr>
                         <td><label jsf:for="name">Name:</label></td>
                         <td>
-                            <input jsf:id="name" type="text" jsf:value="#{registrationBean.name}"
+                            <input jsf:id="name" type="text" jsf:value="#{baseRegistrationBean.name}"
                                    jsf:requiredMessage="Name is required"
                                    jsf:required="true">
                                 <f:ajax execute="@this" render="nameMessage progress"/>
@@ -27,7 +27,7 @@
                     <tr>
                         <td><label jsf:for="tel">Telephone:</label></td>
                         <td>
-                            <input jsf:id="tel" type="text" jsf:value="#{registrationBean.tel}"
+                            <input jsf:id="tel" type="text" jsf:value="#{baseRegistrationBean.tel}"
                                    jsf:required="true"
                                    jsf:requiredMessage="Telephone is required"
                                    jsf:validatorMessage="Must be a number">
@@ -41,7 +41,7 @@
                     <tr>
                         <td><label jsf:for="email">Email:</label></td>
                         <td>
-                            <input jsf:id="email" type="email" jsf:value="#{registrationBean.email}"
+                            <input jsf:id="email" type="email" jsf:value="#{baseRegistrationBean.email}"
                                    jsf:required="true"
                                    jsf:requiredMessage="Email is required"
                                    jsf:validatorMessage="Invalid email format">
@@ -54,13 +54,13 @@
 
                     <tr>
                         <td></td>
-                        <td><progress jsf:id="progress" value="#{registrationBean.progress}" max="3"/></td>
+                        <td><progress jsf:id="progress" value="#{baseRegistrationBean.progress}" max="3"/></td>
                     </tr>
 
                     <tr>
                         <td></td>
                         <td>
-                            <input jsf:update="panel" jsf:actionListener="#{registrationBean.savePerson}" type="submit" value="Submit" />
+                            <input jsf:update="panel" jsf:actionListener="#{baseRegistrationBean.savePerson}" type="submit" value="Submit" />
                             <input type="button" jsf:value="Back to index" jsf:outcome="index" />
                         </td>
                     </tr>

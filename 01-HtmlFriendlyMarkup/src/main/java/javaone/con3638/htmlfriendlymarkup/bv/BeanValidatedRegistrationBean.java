@@ -14,26 +14,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package javaone.con3638.htmlfriendlymarkup;
+package javaone.con3638.htmlfriendlymarkup.bv;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Named
 @SessionScoped
-public class RegistrationBean implements Serializable {
+public class BeanValidatedRegistrationBean implements Serializable {
 
+    @Size(min = 1, message = "Name is required")
     private String name;
+
+    @Size(min = 1, message = "Telephone is required")
+    @Pattern(regexp = "[0-9]+", message = "Telephone must be a number")
     private String tel;
+
+    @Size(min = 1, message = "Email is required")
+    @Email
     private String email;
 
     /**
      * Creates a new instance of RegistrationBean
      */
-    public RegistrationBean() {
+    public BeanValidatedRegistrationBean() {
     }
 
     public String getName() {

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head jsf:id="head">
+        <title>HTML(5) Friendly Markup Samples - Registration Form</title>
+    </head>
+    <body jsf:id="body">
+        <form jsf:id="registrationForm">
+            <p:panel id="panel" header="Registration Form">
+                <p:messages id="status"/>
+                <table>
+                    <tr>
+                        <td><label jsf:for="name">Name:</label></td>
+                        <td>
+                            <input jsf:id="name" type="text" jsf:value="#{beanValidatedRegistrationBean.name}">
+                                <f:ajax execute="@this" render="nameMessage progress"/>
+                            </input>
+                        </td>
+                        <td><p:message id="nameMessage" for="name" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><label jsf:for="tel">Telephone:</label></td>
+                        <td>
+                            <input jsf:id="tel" type="text" jsf:value="#{beanValidatedRegistrationBean.tel}">
+                                <f:ajax execute="@this" render="telMessage progress"/>
+                            </input>
+                        </td>
+                        <td><p:message id="telMessage" for="tel" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><label jsf:for="email">Email:</label></td>
+                        <td>
+                            <input jsf:id="email" type="email" jsf:value="#{beanValidatedRegistrationBean.email}">
+                                <f:ajax execute="@this" render="emailMessage progress"/>
+                            </input>
+                        </td>
+                        <td><p:message id="emailMessage" for="email" /></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><progress jsf:id="progress" value="#{beanValidatedRegistrationBean.progress}" max="3"/></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input jsf:update="panel" jsf:actionListener="#{beanValidatedRegistrationBean.savePerson}" type="submit" value="Submit" />
+                            <input type="button" jsf:value="Back to index" jsf:outcome="index" />
+                        </td>
+                    </tr>
+                </table>
+            </p:panel>
+        </form>
+    </body>
+</html>
+
