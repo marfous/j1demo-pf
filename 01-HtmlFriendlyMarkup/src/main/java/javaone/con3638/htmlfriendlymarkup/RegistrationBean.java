@@ -16,12 +16,15 @@
  */
 package javaone.con3638.htmlfriendlymarkup;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named
-@RequestScoped
-public class RegistrationBean {
+@SessionScoped
+public class RegistrationBean implements Serializable {
 
     private String name;
     private String tel;
@@ -57,16 +60,24 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public Integer getProgress() {
-        Integer progress = new Integer(0);
+    public String getProgress() {
+        int progress = 0;
         if (getName() != null && !getName().isEmpty()) progress++;
         if (getTel() != null && !getTel().isEmpty()) progress++;
         if (getEmail() != null && !getEmail().isEmpty()) progress++;
-        return progress;
+        return String.valueOf(progress);
     }
 
     public void savePerson() {
-        
+        FacesContext.getCurrentInstance().addMessage("status", new FacesMessage(getName() + " was registered!"));
+        // save to DB
+        reset();
+    }
+
+    public void reset() {
+        setName(null);
+        setTel(null);
+        setEmail(null);
     }
     
 }
