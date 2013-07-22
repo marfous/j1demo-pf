@@ -16,28 +16,15 @@
  */
 package javaone.con3638.resourcelibrariescontracts;
 
-import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
+/**
+ *
+ * @author marfous
+ */
+public enum RLCs {
+    RLC1,
+    RLC2;
 
-@Named
-@SessionScoped
-public class SetupBean implements Serializable {
-
-    private String rlc = "rlc1";
-
-    /**
-     * Creates a new instance of SetupBean
-     */
-    public SetupBean() {
+    public String getId() {
+        return name().toLowerCase();
     }
-
-    public String getRlc() {
-        return rlc;
-    }
-
-    public void setRlc(String rlc) {
-        this.rlc = rlc;
-    }
-
 }
