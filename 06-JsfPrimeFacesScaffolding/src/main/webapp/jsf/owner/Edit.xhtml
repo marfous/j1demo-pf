@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOwnerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOwnerLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{ownerController.selected.id}" title="#{bundle.EditOwnerTitle_id}" required="true" requiredMessage="#{bundle.EditOwnerRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditOwnerLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{ownerController.selected.name}" title="#{bundle.EditOwnerTitle_name}" />
+                </h:panelGrid>
+                <h:commandLink action="#{ownerController.update}" value="#{bundle.EditOwnerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOwnerViewLink}"/>
+                <br />
+                <h:commandLink action="#{ownerController.prepareList}" value="#{bundle.EditOwnerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOwnerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

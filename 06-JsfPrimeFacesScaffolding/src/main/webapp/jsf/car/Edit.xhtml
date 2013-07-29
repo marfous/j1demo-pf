@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCarLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{carController.selected.id}" title="#{bundle.EditCarTitle_id}" required="true" requiredMessage="#{bundle.EditCarRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCarLabel_kilometers}" for="kilometers" />
+                    <h:inputText id="kilometers" value="#{carController.selected.kilometers}" title="#{bundle.EditCarTitle_kilometers}" />
+                    <h:outputLabel value="#{bundle.EditCarLabel_mark}" for="mark" />
+                    <h:inputText id="mark" value="#{carController.selected.mark}" title="#{bundle.EditCarTitle_mark}" />
+                    <h:outputLabel value="#{bundle.EditCarLabel_ownerId}" for="ownerId" />
+                    <h:selectOneMenu id="ownerId" value="#{carController.selected.ownerId}" title="#{bundle.EditCarTitle_ownerId}" >
+                        <f:selectItems value="#{ownerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{carController.update}" value="#{bundle.EditCarSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCarViewLink}"/>
+                <br />
+                <h:commandLink action="#{carController.prepareList}" value="#{bundle.EditCarShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCarIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
