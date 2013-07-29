@@ -8,6 +8,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head jsf:id="head">
         <title>HTML(5) Friendly Markup Samples - Registration Form</title>
+        <link rel="stylesheet" media="screen,projection,tv" href="css/image-picker.css" type="text/css" />
+        <script type="text/javascript" src="js/image-picker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("[name='#{imagePicker.clientId}']").imagepicker();
+            });
+        </script>
     </head>
     <body jsf:id="body">
         <form jsf:id="registrationForm">
@@ -44,14 +51,16 @@
                         <td><p:message id="emailMessage" for="email" /></td>
                     </tr>
 
-<!--   TODO                 <tr>
-                        <td><label jsf:for="email">Avatar:</label></td>
+                    <tr>
+                        <td style="vertical-align: top"><label jsf:for="email">Avatar:</label></td>
                         <td colspan="2">
-                            <h:link outcome="img/avatar_java.jpg" pass:data-lightbox="roadtrip" />
-                            <h:link outcome="img/avatar_netbeans.png" />
-                            <h:link outcome="img/avatar_primefaces.png" />
+                            <h:selectOneMenu binding="#{imagePicker}" value="#{beanValidatedRegistrationBean.avatar}">
+                                <f:selectItem pass:data-img-src="img/avatar_java.jpg" itemValue="java"/>
+                                <f:selectItem pass:data-img-src="img/avatar_netbeans.png" itemValue="netbeans"/>
+                                <f:selectItem pass:data-img-src="img/avatar_primefaces.png" itemValue="primefaces"/>
+                            </h:selectOneMenu>
                         </td>
-                    </tr>-->
+                    </tr>
 
                     <tr>
                         <td></td>

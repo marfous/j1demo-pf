@@ -28,16 +28,19 @@ import javax.validation.constraints.Size;
 @SessionScoped
 public class BeanValidatedRegistrationBean implements Serializable {
 
-    @Size(min = 1, message = "Name is required")
+    @Size(min = 1, message = "Name is mandatory")
     private String name;
 
-    @Size(min = 1, message = "Telephone is required")
+    @Size(min = 1, message = "Telephone is mandatory")
     @Pattern(regexp = "[0-9]+", message = "Telephone must be a number")
     private String tel;
 
-    @Size(min = 1, message = "Email is required")
+    @Size(min = 1, message = "Email is mandatory")
     @Email
     private String email;
+
+    @Size(min = 1, message = "Avatar is mandatory")
+    private String avatar;
 
     /**
      * Creates a new instance of RegistrationBean
@@ -67,6 +70,14 @@ public class BeanValidatedRegistrationBean implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getProgress() {
