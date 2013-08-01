@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OwnerEditDlg" widgetVar="OwnerEditDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.EditOwnerTitle}">
+
+            <h:form id="OwnerEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{ownerController.selected != null}">
+
+                        <h:outputLabel value="#{myBundle.EditOwnerLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{ownerController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditOwnerLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{ownerController.selected.name}" title="#{myBundle.EditOwnerTitle_name}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ownerController.save}" value="#{myBundle.Save}" update="display,:OwnerListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,OwnerEditDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="OwnerEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

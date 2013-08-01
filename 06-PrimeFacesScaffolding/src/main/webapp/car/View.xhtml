@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarViewDlg" widgetVar="CarViewDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.ViewCarTitle}">
+
+            <h:form id="CarViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewCarLabel_id}"/>
+                        <h:outputText value="#{carController.selected.id}" title="#{myBundle.ViewCarTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewCarLabel_kilometers}"/>
+                        <h:outputText value="#{carController.selected.kilometers}" title="#{myBundle.ViewCarTitle_kilometers}"/>
+
+                        <h:outputText value="#{myBundle.ViewCarLabel_mark}"/>
+                        <h:outputText value="#{carController.selected.mark}" title="#{myBundle.ViewCarTitle_mark}"/>
+
+                        <h:outputText value="#{myBundle.ViewCarLabel_ownerId}"/>
+                        <h:outputText value="#{carController.selected.ownerId.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="CarViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

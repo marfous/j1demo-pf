@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateCarTitle}">
+
+            <h:form id="CarCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{carController.selected != null}">
+
+                        <p:outputLabel value="#{myBundle.CreateCarLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{carController.selected.id}" title="#{myBundle.CreateCarTitle_id}" required="true" requiredMessage="#{myBundle.CreateCarRequiredMessage_id}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateCarLabel_kilometers}" for="kilometers" />
+                        <p:inputText id="kilometers" value="#{carController.selected.kilometers}" title="#{myBundle.CreateCarTitle_kilometers}" />
+
+                        <p:outputLabel value="#{myBundle.CreateCarLabel_mark}" for="mark" />
+                        <p:inputText id="mark" value="#{carController.selected.mark}" title="#{myBundle.CreateCarTitle_mark}" />
+
+                        <p:outputLabel value="#{myBundle.CreateCarLabel_ownerId}" for="ownerId" />
+                        <p:selectOneMenu id="ownerId" value="#{carController.selected.ownerId}" >
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{ownerController.items}"
+                                           var="ownerIdItem"
+                                           itemValue="#{ownerIdItem}"
+                                           itemLabel="#{ownerIdItem.name.toString()}"
+                                           />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{carController.saveNew}" value="#{myBundle.Save}" update="display,:CarListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CarCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="CarCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

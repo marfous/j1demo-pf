@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OwnerCreateDlg" widgetVar="OwnerCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateOwnerTitle}">
+
+            <h:form id="OwnerCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ownerController.selected != null}">
+
+                        <p:outputLabel value="#{myBundle.CreateOwnerLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{ownerController.selected.id}" title="#{myBundle.CreateOwnerTitle_id}" required="true" requiredMessage="#{myBundle.CreateOwnerRequiredMessage_id}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateOwnerLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{ownerController.selected.name}" title="#{myBundle.CreateOwnerTitle_name}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ownerController.saveNew}" value="#{myBundle.Save}" update="display,:OwnerListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,OwnerCreateDialog);"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="OwnerCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
