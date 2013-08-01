@@ -1,9 +1,9 @@
-package javaone.con3638.jsfscaffolding.jsf.jsfs;
+package javaone.con3638.jsfscaffolding.jsfs;
 
-import javaone.con3638.jsfscaffolding.entities.Car;
-import javaone.con3638.jsfscaffolding.jsf.jsfs.util.JsfUtil;
-import javaone.con3638.jsfscaffolding.jsf.jsfs.util.PaginationHelper;
-import javaone.con3638.jsfscaffolding.jsf.sbs.CarFacade;
+import javaone.con3638.jsfscaffolding.entities.Owner;
+import javaone.con3638.jsfscaffolding.jsfs.util.JsfUtil;
+import javaone.con3638.jsfscaffolding.jsfs.util.PaginationHelper;
+import javaone.con3638.jsfscaffolding.sbs.OwnerFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("carController")
+@Named("ownerController")
 @SessionScoped
-public class CarController implements Serializable {
+public class OwnerController implements Serializable {
 
-    private Car current;
+    private Owner current;
     private DataModel items = null;
     @EJB
-    private javaone.con3638.jsfscaffolding.jsf.sbs.CarFacade ejbFacade;
+    private javaone.con3638.jsfscaffolding.sbs.OwnerFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public CarController() {
+    public OwnerController() {
     }
 
-    public Car getSelected() {
+    public Owner getSelected() {
         if (current == null) {
-            current = new Car();
+            current = new Owner();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private CarFacade getFacade() {
+    private OwnerFacade getFacade() {
         return ejbFacade;
     }
 
@@ -68,13 +68,13 @@ public class CarController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Car) getItems().getRowData();
+        current = (Owner) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Car();
+        current = new Owner();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -82,7 +82,7 @@ public class CarController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("CarCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("OwnerCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/jsf/Bundle").getString("PersistenceErrorOccured"));
@@ -91,7 +91,7 @@ public class CarController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Car) getItems().getRowData();
+        current = (Owner) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -99,7 +99,7 @@ public class CarController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("CarUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("OwnerUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/jsf/Bundle").getString("PersistenceErrorOccured"));
@@ -108,7 +108,7 @@ public class CarController implements Serializable {
     }
 
     public String destroy() {
-        current = (Car) getItems().getRowData();
+        current = (Owner) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -132,7 +132,7 @@ public class CarController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("CarDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/jsf/Bundle").getString("OwnerDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/jsf/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -188,21 +188,21 @@ public class CarController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Car getCar(java.lang.Long id) {
+    public Owner getOwner(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Car.class)
-    public static class CarControllerConverter implements Converter {
+    @FacesConverter(forClass = Owner.class)
+    public static class OwnerControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CarController controller = (CarController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "carController");
-            return controller.getCar(getKey(value));
+            OwnerController controller = (OwnerController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "ownerController");
+            return controller.getOwner(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -222,11 +222,11 @@ public class CarController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Car) {
-                Car o = (Car) object;
+            if (object instanceof Owner) {
+                Owner o = (Owner) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Car.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Owner.class.getName());
             }
         }
 

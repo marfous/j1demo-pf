@@ -1,4 +1,4 @@
-package javaone.con3638.jsfscaffolding.jsf.jsfs.util;
+package javaone.con3638.jsfscaffolding.jsfs.util;
 
 import java.util.List;
 import javax.faces.application.FacesMessage;

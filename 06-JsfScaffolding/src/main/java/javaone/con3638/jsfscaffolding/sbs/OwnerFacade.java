@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package javaone.con3638.jsfscaffolding.jsf.sbs;
+package javaone.con3638.jsfscaffolding.sbs;
 
-import javaone.con3638.jsfscaffolding.entities.Car;
+import javaone.con3638.jsfscaffolding.entities.Owner;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,7 +26,7 @@ import javax.persistence.PersistenceContext;
  * @author marfous
  */
 @Stateless
-public class CarFacade extends AbstractFacade<Car> {
+public class OwnerFacade extends AbstractFacade<Owner> {
     @PersistenceContext(unitName = "javaone.con3638.jsfscaffolding_06-JsfPrimeFacesScaffolding_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -35,8 +35,8 @@ public class CarFacade extends AbstractFacade<Car> {
         return em;
     }
 
-    public CarFacade() {
-        super(Car.class);
+    public OwnerFacade() {
+        super(Owner.class);
     }
 
 }

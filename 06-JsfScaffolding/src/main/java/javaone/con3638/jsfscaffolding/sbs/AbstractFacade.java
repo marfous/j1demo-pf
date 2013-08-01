@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package javaone.con3638.jsfscaffolding.jsf.sbs;
+package javaone.con3638.jsfscaffolding.sbs;
 
 import java.util.List;
 import javax.persistence.EntityManager;
