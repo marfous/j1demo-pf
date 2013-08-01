@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>javaone.con3638.jsfscaffolding</groupId>
-    <artifactId>06-JsfPrimeFacesScaffolding</artifactId>
+    <artifactId>06-JsfScaffolding</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>06-JsfPrimeFacesScaffolding</name>
+    <name>06-JsfScaffolding</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -90,6 +90,6 @@
             <name>Repository for library PrimeFaces-maven-lib</name>
         </repository>
     </repositories>
-    <description>JavaOne demo application which shows generated CRUD applications using JSPs, Facelets and Facelets with PrimeFaces components.</description>
+    <description>JavaOne demo application which shows generated CRUD applications using vanila Facelets.</description>
 </project>
 
