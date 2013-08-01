@@ -1,4 +1,4 @@
 Whole project uses GNU GPL v3 license.
 
-To show all JSF 2.2 features some other project were included and used:
+To show all JSF 2.2, PrimeFaces features some 3rd party projects are included and used:
 Image Picker			MIT license			http://rvera.github.com/image-picker 

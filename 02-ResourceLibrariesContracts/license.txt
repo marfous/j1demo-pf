@@ -1,3 +1,0 @@
-Whole project uses GNU GPL v3 license.
-
-To show all JSF 2.2 features some other project were included and used:
