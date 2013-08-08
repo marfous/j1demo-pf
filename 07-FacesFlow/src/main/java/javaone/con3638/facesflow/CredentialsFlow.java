@@ -51,13 +51,31 @@ import javax.inject.Named;
 @Dependent
 public class CredentialsFlow {
 
+    private static final long serialVersionUID = 1;
+
+    public static final String ID = "credentialsFlow";
+
     @Produces @FlowDefinition
     public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
-        String flowId = "credentialsFlow";
-        flowBuilder.id("", flowId);
-        flowBuilder.viewNode(flowId, "/" + flowId + "/start.xhtml").markAsStartNode();
+        flowBuilder.id("", ID);
+        // 1. page
+        flowBuilder.viewNode(ID, "/" + ID + "/start.xhtml").markAsStartNode();
+        flowBuilder.returnNode("back").fromOutcome("/index");
+
+        // 2. page
+        flowBuilder.viewNode("address", "/" + ID + "/second.xhtml");
+
+        // 3. page - we can use implicit navigation
+//        flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
+
+        // store data by leaving the flow - can be restored then
+        flowBuilder.finalizer("#{storageBean.store()}");
 
         return flowBuilder.getFlow();
+    }
+
+    public String id() {
+        return ID;
     }
 
 }

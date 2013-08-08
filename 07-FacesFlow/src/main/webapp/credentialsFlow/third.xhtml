@@ -9,22 +9,25 @@
         <title>Credentials Page</title>
     </h:head>
     <h:body>
-        <h:form prependId="false">
+        <h:form>
             <p:messages/>
             <p:panelGrid columns="2">
                 <f:facet name="header">
-                    Credentials Page - Person
+                    Credentials Page - Confirmation
                 </f:facet>
 
-                <p:outputLabel for="givenname" value="Given name:" />
-                <p:inputText id="givenname" value="#{personBean.givenname}" />
-
-
-                <p:outputLabel for="surname" value="Surname:" />
-                <p:inputText id="surname" value="#{personBean.surname}" />
+                <p:outputLabel value="Given name:" />
+                <p:outputLabel value="#{personBean.givenname}" />
+                <p:outputLabel value="Surname:" />
+                <p:outputLabel value="#{personBean.surname}" />
+                <p:outputLabel value="Street:" />
+                <p:outputLabel value="#{personBean.street}" />
+                <p:outputLabel value="City:" />
+                <p:outputLabel value="#{personBean.city}" />
 
                 <f:facet name="footer">
-                    <h:commandButton value="Next (Address)" action="address" />
+                    <h:commandButton value="Submit" action="submit" />
+                    <h:commandButton value="Previous (Address)" action="address" />
                     <h:commandButton value="Back to index" action="back" />
                 </f:facet>
             </p:panelGrid>

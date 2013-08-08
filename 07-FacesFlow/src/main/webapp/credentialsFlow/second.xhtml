@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Credentials Page</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:messages/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    Credentials Page - Address
+                </f:facet>
+
+                <p:outputLabel value="Given name:" />
+                <p:outputLabel value="#{personBean.givenname}" />
+                <p:outputLabel value="Surname:" />
+                <p:outputLabel value="#{personBean.surname}" />
+
+                <p:outputLabel for="street" value="Street:" />
+                <p:inputText id="street" value="#{personBean.street}" />
+                <p:outputLabel for="city" value="City:" />
+                <p:inputText id="city" value="#{personBean.city}" />
+
+                <f:facet name="footer">
+                    <!-- Using implicit navigation for the third, confirmation page -->
+                    <h:commandButton value="Next (Confirmation)" action="third" />
+                    <h:commandButton value="Previous (Person)" action="#{credentialsFlow.id}" />
+                    <h:commandButton value="Back to index" action="back" />
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
