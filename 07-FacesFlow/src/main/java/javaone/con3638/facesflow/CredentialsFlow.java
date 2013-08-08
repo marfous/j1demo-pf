@@ -39,24 +39,23 @@
  */
 package javaone.con3638.facesflow;
 
-import java.lang.annotation.Annotation;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Produces;
 import javax.faces.flow.Flow;
 import javax.faces.flow.builder.FlowBuilder;
+import javax.faces.flow.builder.FlowBuilderParameter;
 import javax.faces.flow.builder.FlowDefinition;
 import javax.inject.Named;
 
-/**
- * @author Arun Gupta
- */
-@Named("creadentialsFlow")
-public class CreadentialsFlow {
+@Named
+@Dependent
+public class CredentialsFlow {
 
-    @FlowDefinition
-    public Flow defineFlow(FacesContext context, FlowBuilder flowBuilder) {
-        String flowId = "creadentialsFlow";
+    @Produces @FlowDefinition
+    public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
+        String flowId = "credentialsFlow";
         flowBuilder.id("", flowId);
-        flowBuilder.viewNode(flowId, "/" + flowId + "/index.xhtml").markAsStartNode();
+        flowBuilder.viewNode(flowId, "/" + flowId + "/start.xhtml").markAsStartNode();
 
         return flowBuilder.getFlow();
     }
