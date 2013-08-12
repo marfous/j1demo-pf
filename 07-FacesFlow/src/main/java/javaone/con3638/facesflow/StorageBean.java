@@ -17,6 +17,7 @@
 package javaone.con3638.facesflow;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -33,7 +34,26 @@ public class StorageBean extends PersonBean implements Serializable {
     @Named(value = "personBean")
     PersonBean personBean;
 
-    public void store() {
+    /** Holds information whether the registration wizard was already used. */
+    private AtomicBoolean isStorageUsed = new AtomicBoolean(false);
+
+    public void storeData() {
         setGivenname(personBean.getGivenname());
+        setSurname(personBean.getSurname());
+        setStreet(personBean.getStreet());
+        setCity(personBean.getCity());
+        isStorageUsed.set(true);
     }
+
+    public void restoreData() {
+        personBean.setGivenname(getGivenname());
+        personBean.setSurname(getSurname());
+        personBean.setStreet(getStreet());
+        personBean.setCity(getCity());
+    }
+
+    public AtomicBoolean isStorageUsed() {
+        return isStorageUsed;
+    }
+
 }

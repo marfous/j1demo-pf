@@ -65,11 +65,16 @@ public class CredentialsFlow {
         // 2. page
         flowBuilder.viewNode("address", "/" + ID + "/second.xhtml");
 
-        // 3. page - we can use implicit navigation
-//        flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
+        // 3. page - we can use also implicit navigation
+        // flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
 
         // store data by leaving the flow - can be restored then
-        flowBuilder.finalizer("#{storageBean.store()}");
+        flowBuilder.finalizer("#{storageBean.storeData()}");
+
+        // restore data by usage of the restore link
+        flowBuilder.methodCallNode("restore")
+                .expression("#{storageBean.restoreData()}")
+                .defaultOutcome(ID);
 
         return flowBuilder.getFlow();
     }
