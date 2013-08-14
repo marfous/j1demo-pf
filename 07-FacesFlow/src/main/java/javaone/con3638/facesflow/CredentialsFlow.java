@@ -68,6 +68,9 @@ public class CredentialsFlow {
         // 3. page - we can use also implicit navigation
         // flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
 
+        // flow switch
+        flowBuilder.flowCallNode("submit").flowReference("", "avatarChooser");
+
         // store data by leaving the flow - can be restored then
         flowBuilder.finalizer("#{storageBean.storeData()}");
 
