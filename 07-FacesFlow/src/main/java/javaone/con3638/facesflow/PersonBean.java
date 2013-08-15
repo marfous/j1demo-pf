@@ -31,6 +31,7 @@ public class PersonBean {
     private String surname;
     private String street;
     private String city;
+    private String avatar;
 
     public String getGivenname() {
         return givenname;
@@ -62,6 +63,14 @@ public class PersonBean {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
 }

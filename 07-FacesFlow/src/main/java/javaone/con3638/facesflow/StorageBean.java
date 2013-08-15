@@ -52,6 +52,13 @@ public class StorageBean extends PersonBean implements Serializable {
         personBean.setCity(getCity());
     }
 
+    public void handleLoad() {
+        // if we are comming from the avatar chooser, let's restore data
+        if (personBean.getAvatar() != null && !personBean.getAvatar().isEmpty()) {
+            restoreData();
+        }
+    }
+
     public AtomicBoolean isStorageUsed() {
         return isStorageUsed;
     }

@@ -26,6 +26,12 @@
       <artifactId>javax.faces-api</artifactId>
       <version>2.2</version>
     </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>7.0</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
     <description>JavaOne demo application which shows Faces Flows library - JavaSE project with bundled FacesFlow.</description>
 </project>

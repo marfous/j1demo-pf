@@ -5,8 +5,33 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
     <flow-definition id="avatarChooser">
+        <!-- Parameter from credentials flow -->
+        <inbound-parameter>
+            <name>name</name>
+            <value>#{avatarBean.name}</value>
+        </inbound-parameter>
+
+        <!-- Start page (named as the flow), also could be used <start-node> tag -->
         <view id="avatarChooser">
             <vdl-document>/META-INF/flows/avatarChooser/start.xhtml</vdl-document>
         </view>
+
+        <!-- Go back to the previous flow without save -->
+        <flow-call id="back">
+            <flow-reference>
+                <flow-id>credentialsFlow</flow-id>
+            </flow-reference>
+        </flow-call>
+
+        <!-- Go back to the previous flow and save the value of the avatar -->
+        <flow-call id="save">
+            <flow-reference>
+                <flow-id>credentialsFlow</flow-id>
+            </flow-reference>
+            <outbound-parameter>
+                <name>avatar</name>
+                <value>#{avatarBean.avatar}</value>
+            </outbound-parameter>
+        </flow-call>
     </flow-definition>
 </faces-config>

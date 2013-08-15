@@ -3,25 +3,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:pass="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
+        <h:outputStylesheet name='css/image-picker.css'/>
+        <h:outputScript name="js/jquery.js"/>
+        <h:outputScript name="js/image-picker.js"/>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("[name='#{imagePicker.clientId}']").imagepicker();
+            });
+        </script>
         <title>Avatar Chooser</title>
     </h:head>
     <h:body>
         <h:form prependId="false">
             <p:messages/>
-            <p:panelGrid columns="2">
+            <p:panelGrid columns="1">
                 <f:facet name="header">
                     Avatar Chooser
                 </f:facet>
 
-                <p:outputLabel value="Name:" />
-                <p:outputLabel value="#{personBean.givenname} #{personBean.surname}" />
+                <p:outputLabel value="Name: #{avatarBean.name}" />
+
+                <h:selectOneMenu binding="#{imagePicker}" value="#{avatarBean.avatar}">
+                    <f:selectItem pass:data-img-src="#{resource['img/avatar_java.jpg']}" itemValue="avatar_java.jpg"/>
+                    <f:selectItem pass:data-img-src="#{resource['img/avatar_netbeans.png']}" itemValue="avatar_netbeans.png"/>
+                    <f:selectItem pass:data-img-src="#{resource['img/avatar_primefaces.png']}" itemValue="avatar_primefaces.png"/>
+                </h:selectOneMenu>
 
                 <f:facet name="footer">
-                    <h:commandButton value="Next (Address)" action="address" />
-                    <h:commandButton value="Back to index" action="back" />
+                    <p:row>
+                        <p:column><h:commandButton value="Save" action="save" /></p:column>
+                        <p:column><h:commandButton value="Back" action="back" /></p:column>
+                    </p:row>
                 </f:facet>
             </p:panelGrid>
         </h:form>

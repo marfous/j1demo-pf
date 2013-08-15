@@ -69,15 +69,27 @@ public class CredentialsFlow {
         // flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
 
         // flow switch
-        flowBuilder.flowCallNode("chooseAvatar").flowReference("", "avatarChooser");
+        flowBuilder.flowCallNode("chooseAvatar")
+                // which flow to call
+                .flowReference("", "avatarChooser")
+                // name of the user
+                .outboundParameter("name", "#{personBean.givenname += ' ' += personBean.surname}");
 
         // store data by leaving the flow - can be restored then
         flowBuilder.finalizer("#{storageBean.storeData()}");
 
         // restore data by usage of the restore link
         flowBuilder.methodCallNode("restore")
+                // method to call
                 .expression("#{storageBean.restoreData()}")
+                // where to go
                 .defaultOutcome(ID);
+
+        // if we are going to the flow from the avatarChooser we should restore all values
+        flowBuilder.initializer("#{storageBean.handleLoad()}");
+
+        // saved information about avatar set to the personBean
+        flowBuilder.inboundParameter("avatar", "#{personBean.avatar}");
 
         return flowBuilder.getFlow();
     }
