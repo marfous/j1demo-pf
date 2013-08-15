@@ -5,6 +5,8 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
     <flow-definition id="avatarChooser">
-        <view id="start">/META-INF/flows/avatarChooser/start.xhtml</view>
+        <view id="avatarChooser">
+            <vdl-document>/META-INF/flows/avatarChooser/start.xhtml</vdl-document>
+        </view>
     </flow-definition>
 </faces-config>

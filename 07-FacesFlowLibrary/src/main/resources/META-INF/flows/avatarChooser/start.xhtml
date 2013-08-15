@@ -6,33 +6,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Credentials Page</title>
+        <title>Avatar Chooser</title>
     </h:head>
     <h:body>
         <h:form prependId="false">
             <p:messages/>
             <p:panelGrid columns="2">
                 <f:facet name="header">
-                    Credentials Page - Person
+                    Avatar Chooser
                 </f:facet>
 
-
-                <p:outputLabel for="givenname" value="Given name:" />
-                <p:inputText id="givenname" value="#{personBean.givenname}" />
-
-
-                <p:outputLabel for="surname" value="Surname:" />
-                <p:inputText id="surname" value="#{personBean.surname}" />
+                <p:outputLabel value="Name:" />
+                <p:outputLabel value="#{personBean.givenname} #{personBean.surname}" />
 
                 <f:facet name="footer">
                     <h:commandButton value="Next (Address)" action="address" />
                     <h:commandButton value="Back to index" action="back" />
                 </f:facet>
             </p:panelGrid>
-            <br/>
-            <c:if test="#{storageBean.isStorageUsed().get()}">
-                You have already stored values, click <h:commandLink value="here" action="restore"></h:commandLink> to restore them.
-            </c:if>
         </h:form>
     </h:body>
 </html>

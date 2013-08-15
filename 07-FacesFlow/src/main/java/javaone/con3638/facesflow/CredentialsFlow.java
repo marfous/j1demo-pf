@@ -69,7 +69,7 @@ public class CredentialsFlow {
         // flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
 
         // flow switch
-        flowBuilder.flowCallNode("submit").flowReference("", "avatarChooser");
+        flowBuilder.flowCallNode("chooseAvatar").flowReference("", "avatarChooser");
 
         // store data by leaving the flow - can be restored then
         flowBuilder.finalizer("#{storageBean.storeData()}");
