@@ -55,9 +55,9 @@
                         <td style="vertical-align: top"><label jsf:for="email">Avatar:</label></td>
                         <td colspan="2">
                             <h:selectOneMenu binding="#{imagePicker}" value="#{beanValidatedRegistrationBean.avatar}">
-                                <f:selectItem pass:data-img-src="resources/img/avatar_java.jpg" itemValue="java"/>
-                                <f:selectItem pass:data-img-src="resources/img/avatar_netbeans.png" itemValue="netbeans"/>
-                                <f:selectItem pass:data-img-src="resources/img/avatar_primefaces.png" itemValue="primefaces"/>
+                                <f:selectItem pass:data-img-src="#{resource['img/avatar_java.jpg']}" itemValue="avatar_java.jpg"/>
+                                <f:selectItem pass:data-img-src="#{resource['img/avatar_netbeans.png']}" itemValue="avatar_netbeans.png"/>
+                                <f:selectItem pass:data-img-src="#{resource['img/avatar_primefaces.png']}" itemValue="avatar_primefaces.png"/>
                             </h:selectOneMenu>
                         </td>
                     </tr>
