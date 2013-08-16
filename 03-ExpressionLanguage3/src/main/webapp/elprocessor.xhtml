@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    Used standalone ELProcessor API for evaluation of the EL expressions.<br/>
+    Java source: <code>new ELProcessor().eval(#{elProcessorBean.stringKey});</code>
+    <p:panelGrid>
+        <f:facet name="header">
+            <p:row>
+                <p:column>Parameter to evaluate</p:column>
+                <p:column>Evaluated value</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column styleClass="keyText">#{elProcessorBean.stringKey}</p:column>
+            <p:column styleClass="valueText">#{elProcessorBean.stringValue}</p:column>
+        </p:row>
+        <p:row>
+            <p:column styleClass="keyText">#{elProcessorBean.mathExpressionKey}</p:column>
+            <p:column styleClass="valueText">#{elProcessorBean.mathExpressionValue}</p:column>
+        </p:row>
+        <p:row>
+            <p:column styleClass="keyText">#{elProcessorBean.moreEvaluationsKey}</p:column>
+            <p:column styleClass="valueText">#{elProcessorBean.moreEvaluationsValue}</p:column>
+        </p:row>
+
+    </p:panelGrid>
+</ui:composition>
+

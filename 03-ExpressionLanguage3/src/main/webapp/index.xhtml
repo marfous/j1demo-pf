@@ -1,14 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Expression Language 3.0</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <h1>Expression Language 3.0</h1>
+        <p:tabView effect="fade" effectDuration="fast">
+            <p:tab title="Standalone ELProcessor">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <ui:include src="elprocessor.xhtml"/>
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Operators">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Static Fields and Methods">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Expressions">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Collections">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Collection Operations">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+            <p:tab title="Lambda Expressions">
+                <h:panelGrid columns="1" cellpadding="10">
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>  
     </h:body>
 </html>
 
