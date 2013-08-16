@@ -26,7 +26,7 @@
                     Avatar Chooser
                 </f:facet>
 
-                <p:outputLabel value="Name: #{avatarBean.name}" />
+                <p:outputLabel value="Name: #{avatarBean.givenname += ' ' += avatarBean.surname}" />
 
                 <h:selectOneMenu binding="#{imagePicker}" value="#{avatarBean.avatar}">
                     <f:selectItem pass:data-img-src="#{resource['img/avatar_java.jpg']}" itemValue="avatar_java.jpg"/>
@@ -37,7 +37,6 @@
                 <f:facet name="footer">
                     <p:row>
                         <p:column><h:commandButton value="Save" action="save" /></p:column>
-                        <p:column><h:commandButton value="Back" action="back" /></p:column>
                     </p:row>
                 </f:facet>
             </p:panelGrid>

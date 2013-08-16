@@ -58,9 +58,12 @@ public class CredentialsFlow {
     @Produces @FlowDefinition
     public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
         flowBuilder.id("", ID);
+
+        // return node from the flow
+        flowBuilder.returnNode("index").fromOutcome("/index");
+
         // 1. page
         flowBuilder.viewNode(ID, "/" + ID + "/start.xhtml").markAsStartNode();
-        flowBuilder.returnNode("back").fromOutcome("/index");
 
         // 2. page
         flowBuilder.viewNode("address", "/" + ID + "/second.xhtml");
@@ -73,7 +76,8 @@ public class CredentialsFlow {
                 // which flow to call
                 .flowReference("", "avatarChooser")
                 // name of the user
-                .outboundParameter("name", "#{personBean.givenname += ' ' += personBean.surname}");
+                .outboundParameter("givenname", "#{personBean.givenname}")
+                .outboundParameter("surname", "#{personBean.surname}");
 
         // store data by leaving the flow - can be restored then
         flowBuilder.finalizer("#{storageBean.storeData()}");
@@ -84,9 +88,6 @@ public class CredentialsFlow {
                 .expression("#{storageBean.restoreData()}")
                 // where to go
                 .defaultOutcome(ID);
-
-        // if we are going to the flow from the avatarChooser we should restore all values
-        flowBuilder.initializer("#{storageBean.handleLoad()}");
 
         // saved information about avatar set to the personBean
         flowBuilder.inboundParameter("avatar", "#{personBean.avatar}");

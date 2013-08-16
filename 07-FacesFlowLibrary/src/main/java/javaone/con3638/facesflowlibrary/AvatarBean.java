@@ -27,8 +27,8 @@ import javax.inject.Named;
 @FlowScoped("avatarChooser")
 public class AvatarBean {
 
-    private String name;
-    private String flowTarget;
+    private String surname;
+    private String givenname;
     private String avatar;
 
     public String getAvatar() {
@@ -39,20 +39,20 @@ public class AvatarBean {
         this.avatar = avatar;
     }
 
-    public String getName() {
-        return name;
+    public String getSurname() {
+        return surname != null ? surname : "";
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getFlowTarget() {
-        return flowTarget;
+    public String getGivenname() {
+        return givenname != null ? givenname : "";
     }
 
-    public void setFlowTarget(String flowTarget) {
-        this.flowTarget = flowTarget;
+    public void setGivenname(String givenname) {
+        this.givenname = givenname;
     }
 
 }

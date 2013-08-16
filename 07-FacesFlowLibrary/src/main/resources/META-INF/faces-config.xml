@@ -1,14 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <faces-config version="2.2"
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
     <flow-definition id="avatarChooser">
         <!-- Parameter from credentials flow -->
         <inbound-parameter>
-            <name>name</name>
-            <value>#{avatarBean.name}</value>
+            <name>surname</name>
+            <value>#{avatarBean.surname}</value>
+        </inbound-parameter>
+        <inbound-parameter>
+            <name>givenname</name>
+            <value>#{avatarBean.givenname}</value>
         </inbound-parameter>
 
         <!-- Start page (named as the flow), also could be used <start-node> tag -->
@@ -16,12 +20,9 @@
             <vdl-document>/META-INF/flows/avatarChooser/start.xhtml</vdl-document>
         </view>
 
-        <!-- Go back to the previous flow without save -->
-        <flow-call id="back">
-            <flow-reference>
-                <flow-id>credentialsFlow</flow-id>
-            </flow-reference>
-        </flow-call>
+        <flow-return id="index">
+            <from-outcome>/index</from-outcome>
+        </flow-return>
 
         <!-- Go back to the previous flow and save the value of the avatar -->
         <flow-call id="save">

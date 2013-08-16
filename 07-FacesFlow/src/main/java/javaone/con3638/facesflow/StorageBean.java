@@ -35,13 +35,14 @@ public class StorageBean extends PersonBean implements Serializable {
     PersonBean personBean;
 
     /** Holds information whether the registration wizard was already used. */
-    private AtomicBoolean isStorageUsed = new AtomicBoolean(false);
+    private final AtomicBoolean isStorageUsed = new AtomicBoolean(false);
 
     public void storeData() {
         setGivenname(personBean.getGivenname());
         setSurname(personBean.getSurname());
         setStreet(personBean.getStreet());
         setCity(personBean.getCity());
+        setAvatar(personBean.getAvatar());
         isStorageUsed.set(true);
     }
 
@@ -50,13 +51,7 @@ public class StorageBean extends PersonBean implements Serializable {
         personBean.setSurname(getSurname());
         personBean.setStreet(getStreet());
         personBean.setCity(getCity());
-    }
-
-    public void handleLoad() {
-        // if we are comming from the avatar chooser, let's restore data
-        if (personBean.getAvatar() != null && !personBean.getAvatar().isEmpty()) {
-            restoreData();
-        }
+        personBean.setAvatar(getAvatar());
     }
 
     public AtomicBoolean isStorageUsed() {
