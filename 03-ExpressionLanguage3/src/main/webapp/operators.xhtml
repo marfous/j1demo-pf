@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    New operators defined by Expression Language 3.0 specification.<br/>
+    <p:panelGrid>
+        <f:facet name="header">
+            <p:row>
+                <p:column>Operator Type</p:column>
+                <p:column colspan="2">Several examples</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column rowspan="2" styleClass="keyText">String Concatenation Operator <code>+=</code></p:column>
+            <p:column>
+                <code>\#{'Welcome' += ' ' += 'to' += ' ' += 'JavaOne!'}</code>
+            </p:column>
+            <p:column>
+                #{'Welcome' += ' ' += 'to' += ' ' += 'JavaOne!'}
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{'It\'s not like integer increment: ' += 5 += 6}</code>
+            </p:column>
+            <p:column>
+                #{'It\'s not like integer increment: ' += 5 += 6}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column rowspan="2" styleClass="keyText">Semicolon Operator <code>;</code></p:column>
+            <p:column>
+                <code>\#{localVar = 'Hello World!'; localVar}</code>
+            </p:column>
+            <p:column>
+                #{localVar = 'Hello World!'; localVar}
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{5 + 6; ' '; operatorsBean.carBrands[5]}</code>
+            </p:column>
+            <p:column>
+                #{5 + 6; ' '; operatorsBean.carBrands[5]}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column rowspan="3" styleClass="keyText">Assignment Operator <code>=</code></p:column>
+            <p:column>
+                <code>\#{a = 1; b = 2; c = a + b}</code>
+            </p:column>
+            <p:column>
+                #{a = 1; b = 2; c = a + b}
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{brands = operatorsBean.carBrands; brands[0]}</code>
+            </p:column>
+            <p:column>
+                #{brands = operatorsBean.carBrands; brands[0]}
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{brand = operatorsBean.carBrands[0];''} \#{brand.toLowerCase()}</code>
+            </p:column>
+            <p:column>
+                #{brand = operatorsBean.carBrands[0];''} #{brand.toLowerCase()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">Lambda Operator <code>-></code></p:column>
+            <p:column colspan="2" styleClass="valueText">see later...</p:column>
+        </p:row>
+    </p:panelGrid>
+</ui:composition>
+
