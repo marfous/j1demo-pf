@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    Construction of collections dynamically at time of the artifact processing. Values of collections can be of mixed types.<br/>
+    <p:panelGrid>
+        <f:facet name="header">
+            <p:row>
+                <p:column>Collection Type</p:column>
+                <p:column colspan="2">Syntax and Resolved Element</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column rowspan="2" styleClass="keyText">Lists</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3]}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3]}
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{[Boolean(true), "Hello", 5]}</code>
+            </p:column>
+            <p:column>
+                #{[Boolean(true), "Hello", 5]}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column rowspan="2" styleClass="keyText">Sets</p:column>
+            <p:column>
+                <code>\#{{1, 2, 3}}</code>
+            </p:column>
+            <p:column>
+                <!-- Why using outputText? See https://java.net/jira/browse/JAVASERVERFACES-2891-->
+                <h:outputText value="#{{1, 2, 3}}" />
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                <code>\#{{'one', 2, Integer(3)}}</code>
+            </p:column>
+            <p:column>
+                <h:outputText value="#{{'one', 2, Integer(3)}}" />
+            </p:column>
+        </p:row>
+
+    </p:panelGrid>
+</ui:composition>
+
