@@ -18,7 +18,7 @@
         <p:row>
             <p:column rowspan="2" styleClass="keyText">Lists</p:column>
             <p:column>
-                <code>\#{[1, 2, 3]}</code>
+                integer values: <code>\#{[1, 2, 3]}</code>
             </p:column>
             <p:column>
                 #{[1, 2, 3]}
@@ -26,7 +26,7 @@
         </p:row>
         <p:row>
             <p:column>
-                <code>\#{[Boolean(true), "Hello", 5]}</code>
+                mixed values: <code>\#{[Boolean(true), "Hello", 5]}</code>
             </p:column>
             <p:column>
                 #{[Boolean(true), "Hello", 5]}
@@ -36,7 +36,7 @@
         <p:row>
             <p:column rowspan="2" styleClass="keyText">Sets</p:column>
             <p:column>
-                <code>\#{{1, 2, 3}}</code>
+                integer values: <code>\#{{1, 2, 3}}</code>
             </p:column>
             <p:column>
                 <!-- Why using outputText? See https://java.net/jira/browse/JAVASERVERFACES-2891-->
@@ -45,10 +45,37 @@
         </p:row>
         <p:row>
             <p:column>
-                <code>\#{{'one', 2, Integer(3)}}</code>
+                mixed values: <code>\#{{'one', 2, Integer(3)}}</code>
             </p:column>
             <p:column>
                 <h:outputText value="#{{'one', 2, Integer(3)}}" />
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column rowspan="3" styleClass="keyText">Maps</p:column>
+            <p:column>
+                integer key, mixed value: <code>\#{{1:'one', 2:2, 3:null}}</code>
+            </p:column>
+            <p:column>
+                <!-- Why using outputText? See https://java.net/jira/browse/JAVASERVERFACES-2891-->
+                <h:outputText value="#{{1:'one', 2:2, 3:null}}" />
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                string key, mixed value: <code>\#{{'one':1, 'two':2, 'three':3}}</code>
+            </p:column>
+            <p:column>
+                <h:outputText value="#{{'one':1, 'two':2, 'three':3}}" />
+            </p:column>
+        </p:row>
+        <p:row>
+            <p:column>
+                nested values: <code>\#{{1:['array'], 2:{'set'}, 3:{'id' : 'map'}}}</code>
+            </p:column>
+            <p:column>
+                <h:outputText value="#{{1:['array'], 2:{'set'}, 3:{'id' : 'map'}}}" />
             </p:column>
         </p:row>
 
