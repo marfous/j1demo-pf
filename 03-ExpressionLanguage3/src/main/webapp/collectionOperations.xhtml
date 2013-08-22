@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    Collection operations a la Java SE 8 can be used (with JDK 7) over any Iterable elements and arrays.<br/>
+    <p:panelGrid>
+        <f:facet name="header">
+            <p:row>
+                <p:column>Operation</p:column>
+                <p:column>Return Type</p:column>
+                <p:column colspan="2">Sample and Resolved Value</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column styleClass="keyText">allMatch()</p:column>
+            <p:column styleClass="keyText">boolean</p:column>
+            <p:column>
+                <code>\#{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isString(i))}</code>
+            </p:column>
+            <p:column>
+                #{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isString(i))}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">anyMatch()</p:column>
+            <p:column styleClass="keyText">boolean</p:column>
+            <p:column>
+                <code>\#{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isInteger(i))}</code>
+            </p:column>
+            <p:column>
+                #{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isInteger(i))}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">average()</p:column>
+            <p:column styleClass="keyText">Optional</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3].stream().average().get()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3].stream().average().get()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">count()</p:column>
+            <p:column styleClass="keyText">Object</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 6].stream().count()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 6].stream().count()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">distinct()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().distinct().toList()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().distinct().toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">filter()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().filter(i->i lt 3).toList()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().filter(i->i lt 3).toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">findFirst()</p:column>
+            <p:column styleClass="keyText">Optional</p:column>
+            <p:column>
+                <code>\#{['pear', 'whatever'].stream().findFirst().get()}</code>
+            </p:column>
+            <p:column>
+                #{['pear', 'whatever'].stream().findFirst().get()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">flatMap()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                TODO
+            </p:column>
+            <p:column>
+                TODO
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">forEach()</p:column>
+            <p:column styleClass="keyText">void</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().forEach(i->i * 3)}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().forEach(i->collectionOperationsBean.logToConsole())}
+            </p:column>
+        </p:row>
+
+    </p:panelGrid>
+</ui:composition>
+
