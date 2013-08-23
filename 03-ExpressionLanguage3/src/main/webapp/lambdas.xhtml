@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    Lambda expressions are similar to the Java SE 8 ones. It can be immediately resolved, referenced, passed as a method parameter.<br/>
+    <p:panelGrid>
+        <f:facet name="header">
+            <p:row>
+                <p:column>Description</p:column>
+                <p:column colspan="2">Sample and Resolved Value</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column styleClass="keyText">No parameter lambda</p:column>
+            <p:column>
+                <code>\#{v = 5} * 2 = \#{(()->2 * v)()}</code>
+            </p:column>
+            <p:column>
+                #{v = 5} * 2 = #{(()->2 * v)()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">One parameter lambda</p:column>
+            <p:column>
+                <code>\#{(i->2 * i)(2)}</code>
+            </p:column>
+            <p:column>
+                #{(i->2 * i)(2)}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">More parameter lambda</p:column>
+            <p:column>
+                <code>\#{((i, j, k)->1 * i + 2 * j + 3 * k)(1, 2, 3)}</code>
+            </p:column>
+            <p:column>
+                #{((i, j, k)->1 * i + 2 * j + 3 * k)(1, 2, 3)}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">Referenced lambda</p:column>
+            <p:column>
+                <code>\#{divLambda = (a, b)->a div b; divLambda(20, 3)}</code>
+            </p:column>
+            <p:column>
+                #{divLambda = (a, b)->a div b; divLambda(20, 3)}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">Lambda as method argument</p:column>
+            <p:column colspan="2">
+                See later...
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+</ui:composition>
+
