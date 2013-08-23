@@ -25,7 +25,7 @@ import javax.inject.Named;
  *
  * @author marfous
  */
-@Named
+@Named("cob")
 @RequestScoped
 public class CollectionOperationsBean {
 

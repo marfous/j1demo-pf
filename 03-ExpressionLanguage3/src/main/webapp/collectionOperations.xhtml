@@ -20,10 +20,10 @@
             <p:column styleClass="keyText">allMatch()</p:column>
             <p:column styleClass="keyText">boolean</p:column>
             <p:column>
-                <code>\#{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isString(i))}</code>
+                <code>\#{['pear', 'whatever'].stream().allMatch(i->cob.isString(i))}</code>
             </p:column>
             <p:column>
-                #{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isString(i))}
+                #{['pear', 'whatever'].stream().allMatch(i->cob.isString(i))}
             </p:column>
         </p:row>
 
@@ -31,10 +31,10 @@
             <p:column styleClass="keyText">anyMatch()</p:column>
             <p:column styleClass="keyText">boolean</p:column>
             <p:column>
-                <code>\#{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isInteger(i))}</code>
+                <code>\#{['pear', 'whatever'].stream().allMatch(i->cob.isInteger(i))}</code>
             </p:column>
             <p:column>
-                #{['pear', 'whatever'].stream().allMatch(i->collectionOperationsBean.isInteger(i))}
+                #{['pear', 'whatever'].stream().allMatch(i->cob.isInteger(i))}
             </p:column>
         </p:row>
 
@@ -97,10 +97,10 @@
             <p:column styleClass="keyText">flatMap()</p:column>
             <p:column styleClass="keyText">Stream</p:column>
             <p:column>
-                TODO
+                <code>\#{[{1, 2},{3, 3}].stream().flatMap(i->i.stream()).toList()}</code>
             </p:column>
             <p:column>
-                TODO
+                <h:outputText value="#{[{1, 2},{3, 3}].stream().flatMap(i->i.stream()).toList()}"/>
             </p:column>
         </p:row>
 
@@ -111,7 +111,139 @@
                 <code>\#{[1, 2, 3, 3].stream().forEach(i->i * 3)}</code>
             </p:column>
             <p:column>
-                #{[1, 2, 3, 3].stream().forEach(i->collectionOperationsBean.logToConsole())}
+                #{[1, 2, 3, 3].stream().forEach(i->cob.logToConsole(i))}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">limit()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().limit(2).toList()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().limit(2).toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">map()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().map(i-> i + 4).toList()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().map(i-> i + 4).toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">max()</p:column>
+            <p:column styleClass="keyText">Optional</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 8].stream().max().get()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 8].stream().max().get()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">min()</p:column>
+            <p:column styleClass="keyText">Optional</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 8].stream().min().get()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 8].stream().min().get()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">noneMatch()</p:column>
+            <p:column styleClass="keyText">boolean</p:column>
+            <p:column>
+                <code>\#{['word', null, 4, 'cent'].stream().noneMatch(i->i eq null)}</code>
+            </p:column>
+            <p:column>
+                #{['word', null, 4, 'cent'].stream().noneMatch(i->i eq null)}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">peek()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{['word', null, 4, 'cent'].stream().peek(i->cob.logToConsole(i)).toList()}</code>
+            </p:column>
+            <p:column>
+                #{['word', null, 4, 'cent'].stream().peek(i->cob.logToConsole(i)).toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">reduce()</p:column>
+            <p:column styleClass="keyText">Optional</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 8].stream().reduce((i,j)->(i > j ? i : j)).get()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 8].stream().reduce((i,j)->(i > j ? i : j)).get()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">sorted()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{['a', 'z', 'g'].stream().sorted().toList()}</code>
+            </p:column>
+            <p:column>
+                #{['a', 'z', 'g'].stream().sorted().toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">substream()</p:column>
+            <p:column styleClass="keyText">Stream</p:column>
+            <p:column>
+                <code>\#{['a', 'z', 'g'].stream().substream(1).toList()}</code>
+            </p:column>
+            <p:column>
+                #{['a', 'z', 'g'].stream().substream(1).toList()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">sum()</p:column>
+            <p:column styleClass="keyText">Object</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().sum()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().sum()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">toArray()</p:column>
+            <p:column styleClass="keyText">Object[]</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().toArray()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().toArray()}
+            </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column styleClass="keyText">toList()</p:column>
+            <p:column styleClass="keyText">Object</p:column>
+            <p:column>
+                <code>\#{[1, 2, 3, 3].stream().toList()}</code>
+            </p:column>
+            <p:column>
+                #{[1, 2, 3, 3].stream().toList()}
             </p:column>
         </p:row>
 
