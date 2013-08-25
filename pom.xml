@@ -16,6 +16,7 @@
         <module>07-FacesFlow</module>
         <module>07-FacesFlowLibrary</module>
         <module>09-FileUpload</module>
+    <module>10-PrimeTime</module>
   </modules>
 
 </project>
