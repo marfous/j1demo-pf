@@ -11,12 +11,13 @@
 		<module>01-HtmlFriendlyMarkup</module>
 		<module>02-ResourceLibrariesContracts</module>
         <module>03-ExpressionLanguage3</module>
+        <module>04-PrimeFacesThemes</module>
         <module>06-JsfScaffolding</module>
         <module>06-PrimeFacesScaffolding</module>
         <module>07-FacesFlow</module>
         <module>07-FacesFlowLibrary</module>
         <module>09-FileUpload</module>
-    <module>08-FacesComponent</module>
+        <module>10-PrimeTime</module>
   </modules>
 
 </project>
