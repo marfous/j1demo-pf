@@ -23,6 +23,7 @@ import javax.faces.component.FacesComponent;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.inject.Inject;
 
 /**
  * This component defines name and namespace explicitly. Be careful you don't
@@ -38,6 +39,9 @@ import javax.faces.context.ResponseWriter;
         namespace = "http://xmlns.jcp.org/jsf/remoteLibrary")
 public class Clock extends UIComponentBase {
 
+    @Inject
+    HtmlContentBuider contentBuilder;
+
     @Override
     public String getFamily() {
         return "javaone.con3638.facescomponentlibrary";
@@ -45,33 +49,12 @@ public class Clock extends UIComponentBase {
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-        renderJavaScriptTag(context, getResourcePath(context, "js", "jquery.js"));
-        renderJavaScriptTag(context, getResourcePath(context, "js", "clock.js"));
+        contentBuilder.renderJavaScriptTag(context, getResourcePath(context, "js", "jquery.js"));
+        contentBuilder.renderJavaScriptTag(context, getResourcePath(context, "js", "clock.js"));
         
-        renderStylesheetTag(context, getResourcePath(context, "css", "styles.css"));
+        contentBuilder.renderStylesheetTag(context, getResourcePath(context, "css", "styles.css"));
 
         renderClockComponent(context);
-    }
-
-    private static void renderStylesheetTag(FacesContext context, String src) throws IOException {
-        ResponseWriter writer = context.getResponseWriter();
-        writer.append('\n');
-        writer.startElement("link", null);
-        writer.writeAttribute("type", "text/css", null);
-        writer.writeAttribute("rel", "stylesheet", null);
-        writer.writeAttribute("href", src, null);
-        writer.endElement("link");
-        writer.append('\n');
-    }
-
-    private static void renderJavaScriptTag(FacesContext context, String src) throws IOException {
-        ResponseWriter writer = context.getResponseWriter();
-        writer.append('\n');
-        writer.startElement("script", null);
-        writer.writeAttribute("type", "text/javascript", null);
-        writer.writeAttribute("src", src, null);
-        writer.endElement("script");
-        writer.append('\n');
     }
 
     private static void renderClockComponent(FacesContext context) throws IOException {
