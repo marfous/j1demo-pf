@@ -25,11 +25,16 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 /**
+ * This component uses default naming and namespace definition. It means that it
+ * can be called as "clock" tag (lowercased initial letter) and it's defined in
+ * "http://xmlns.jcp.org/jsf/component" namespace.
  *
  * @author marfous
  */
 @FacesComponent(createTag = true)
 public class Clock extends UIComponentBase {
+
+    private static final String COMPONENT_NAME = "clock";
 
     @Override
     public String getFamily() {
@@ -38,10 +43,10 @@ public class Clock extends UIComponentBase {
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-        renderJavaScriptTag(context, getResourcePath(context, "js", "jquery.js"));
-        renderJavaScriptTag(context, getResourcePath(context, "js", "clock.js"));
+        renderJavaScriptTag(context, getResourcePath(context, "jquery.js"));
+        renderJavaScriptTag(context, getResourcePath(context, "clock.js"));
         
-        renderStylesheetTag(context, getResourcePath(context, "css", "styles.css"));
+        renderStylesheetTag(context, getResourcePath(context, "styles.css"));
 
         renderClockComponent(context);
     }
@@ -73,34 +78,34 @@ public class Clock extends UIComponentBase {
         writer.startElement("div", null);
         writer.writeAttribute("class", "clock", null);
             writer.startElement("div", null);
-            writer.writeAttribute("id", "Date", null);
+            writer.writeAttribute("class", "date", null);
             writer.endElement("div");
             writer.startElement("ul", null);
                 writer.startElement("li", null);
-                writer.writeAttribute("id", "hours", null);
+                writer.writeAttribute("class", "hours", null);
                 writer.endElement("li");
                 writer.startElement("li", null);
-                writer.writeAttribute("id", "point", null);
+                writer.writeAttribute("class", "point", null);
                 writer.writeText(":", null);
                 writer.endElement("li");
                 writer.startElement("li", null);
-                writer.writeAttribute("id", "min", null);
+                writer.writeAttribute("class", "min", null);
                 writer.endElement("li");
                 writer.startElement("li", null);
-                writer.writeAttribute("id", "point", null);
+                writer.writeAttribute("class", "point", null);
                 writer.writeText(":", null);
                 writer.endElement("li");
                 writer.startElement("li", null);
-                writer.writeAttribute("id", "sec", null);
+                writer.writeAttribute("class", "sec", null);
                 writer.endElement("li");
             writer.endElement("ul");
         writer.endElement("div");
         writer.append('\n');
     }
 
-    private static String getResourcePath(FacesContext context, String libraryName, String resourceName) {
+    private static String getResourcePath(FacesContext context, String resourceName) {
         ResourceHandler handler = context.getApplication().getResourceHandler();
-        Resource resource = handler.createResource(resourceName, "resources/" + libraryName);
+        Resource resource = handler.createResource(resourceName, COMPONENT_NAME);
         return (resource != null) ? resource.getRequestPath() : "";
     }
 
