@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:local="http://xmlns.jcp.org/jsf/component"
+      xmlns:remote="http://xmlns.jcp.org/jsf/remoteLibrary"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Faces Component</title>
@@ -19,7 +20,7 @@
             <local:clock/>
 
             Custom component - defined in external .JAR:
-            <local:clock/>
+            <remote:externalClockComponent/>
 
         </p:panelGrid>
     </h:body>
