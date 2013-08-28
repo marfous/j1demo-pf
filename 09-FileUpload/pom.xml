@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>3.5</version>
+            <version>4.0-SNAPSHOT</version>
         </dependency>
         
         <dependency>
