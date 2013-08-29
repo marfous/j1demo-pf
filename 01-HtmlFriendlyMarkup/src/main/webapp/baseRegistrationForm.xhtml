@@ -13,8 +13,10 @@
                 <p:messages id="status"/>
                 <table>
                     <tr>
+                        <!-- TagDecorator translates this component as a "h:outputLabel" element before compiling by TagHandler-->
                         <td><label jsf:for="name">Name:</label></td>
                         <td>
+                           <!-- Validation here can be messy, the second form shows the better way - using Bean Validation API -->
                             <input jsf:id="name" type="text" jsf:value="#{baseRegistrationBean.name}"
                                    jsf:requiredMessage="Name is required"
                                    jsf:required="true">
