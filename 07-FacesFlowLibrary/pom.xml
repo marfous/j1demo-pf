@@ -44,6 +44,14 @@
         <type>jar</type>
       </dependency>
     </dependencies>
-  
+
+  <repositories>
+        <repository>
+            <url>http://repository.primefaces.org/</url>
+            <id>PrimeFaces-maven-lib</id>
+            <layout>default</layout>
+            <name>Repository for library PrimeFaces-maven-lib</name>
+        </repository>
+    </repositories>
     <description>JavaOne demo application which shows Faces Flows library - JavaSE project with bundled FacesFlow.</description>
 </project>
