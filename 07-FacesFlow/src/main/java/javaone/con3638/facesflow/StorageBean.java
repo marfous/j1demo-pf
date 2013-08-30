@@ -23,8 +23,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
 /**
+ * Stores person data into the session to be able to recover them again.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named(value = "storageBean")
 @SessionScoped
@@ -38,8 +39,8 @@ public class StorageBean extends PersonBean implements Serializable {
     private final AtomicBoolean isStorageUsed = new AtomicBoolean(false);
 
     public void storeData() {
-        setGivenname(personBean.getGivenname());
-        setSurname(personBean.getSurname());
+        setFirstName(personBean.getFirstName());
+        setSecondName(personBean.getSecondName());
         setStreet(personBean.getStreet());
         setCity(personBean.getCity());
         setAvatar(personBean.getAvatar());
@@ -47,8 +48,8 @@ public class StorageBean extends PersonBean implements Serializable {
     }
 
     public void restoreData() {
-        personBean.setGivenname(getGivenname());
-        personBean.setSurname(getSurname());
+        personBean.setFirstName(getFirstName());
+        personBean.setSecondName(getSecondName());
         personBean.setStreet(getStreet());
         personBean.setCity(getCity());
         personBean.setAvatar(getAvatar());

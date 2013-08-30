@@ -21,8 +21,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
+ * Usage of standalone EL 3.0 ElProcessor.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named
 @RequestScoped
@@ -33,8 +34,6 @@ public class ElProcessorBean {
     private static final String HELLO_WORLD = "'Hello' += 'World' += '!'";
     private static final String MATH_OPERATION = "5 * 8 % 6";
     private static final String MORE_EVALUATIONS = "a = 50; b = 51; a + b";
-//    private static final String HELLO_WORLD = "";
-//    private static final String HELLO_WORLD = "";
 
     public String getStringKey() {
         return HELLO_WORLD;

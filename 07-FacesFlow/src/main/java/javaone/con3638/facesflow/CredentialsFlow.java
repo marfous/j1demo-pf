@@ -47,46 +47,56 @@ import javax.faces.flow.builder.FlowBuilderParameter;
 import javax.faces.flow.builder.FlowDefinition;
 import javax.inject.Named;
 
+/**
+ * Defines the CredentialsFlow flow. It specifies the start node, view nodes and
+ * related actions, return node, finalizer and more.
+ *
+ * @author Martin Fousek <marfous@netbeans.org>
+ */
 @Named
 @Dependent
 public class CredentialsFlow {
 
     private static final long serialVersionUID = 1;
 
+    /** ID of the flow. */
     public static final String ID = "credentialsFlow";
 
+    // Defines that this method produces definition of the flow.
     @Produces @FlowDefinition
+    // @FlowBuilderParameter causes that FlowBuilder will be passed to this method
     public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
         flowBuilder.id("", ID);
 
         // return node from the flow
         flowBuilder.returnNode("index").fromOutcome("/index");
 
-        // 1. page
-        flowBuilder.viewNode(ID, "/" + ID + "/start.xhtml").markAsStartNode();
+        // 1. page - start node
+        flowBuilder.viewNode(ID, "/" + ID + "/first.xhtml").markAsStartNode();
 
-        // 2. page
+        // 2. page - explicitly named
         flowBuilder.viewNode("address", "/" + ID + "/second.xhtml");
 
-        // 3. page - we can use also implicit navigation
-        // flowBuilder.viewNode("confirmation", "/" + ID + "/third.xhtml");
+        // 3. page - we can use also implicit navigation/naming if the action is
+        //   called as the view node
+        // flowBuilder.viewNode("third", "/" + ID + "/third.xhtml");
 
-        // flow switch
+        // switch flow to the avatarChooser one
         flowBuilder.flowCallNode("chooseAvatar")
                 // which flow to call
                 .flowReference("", "avatarChooser")
-                // name of the user
-                .outboundParameter("givenname", "#{personBean.givenname}")
-                .outboundParameter("surname", "#{personBean.surname}");
+                // outgoing parameters - name of the user
+                .outboundParameter("firstName", "#{personBean.firstName}")
+                .outboundParameter("secondName", "#{personBean.secondName}");
 
         // store data by leaving the flow - can be restored then
         flowBuilder.finalizer("#{storageBean.storeData()}");
 
-        // restore data by usage of the restore link
+        // restore data by calling "restore" action
         flowBuilder.methodCallNode("restore")
                 // method to call
                 .expression("#{storageBean.restoreData()}")
-                // where to go
+                // where to go then
                 .defaultOutcome(ID);
 
         // saved information about avatar set to the personBean
@@ -95,7 +105,7 @@ public class CredentialsFlow {
         return flowBuilder.getFlow();
     }
 
-    public String id() {
+    public String getId() {
         return ID;
     }
 

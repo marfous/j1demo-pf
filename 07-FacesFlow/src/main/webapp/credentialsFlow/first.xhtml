@@ -18,12 +18,11 @@
                         Credentials Page - Person
                     </f:facet>
 
-                    <p:outputLabel for="givenname" value="Given name:" />
-                    <p:inputText id="givenname" value="#{personBean.givenname}" />
+                    <p:outputLabel for="firstname" value="First name:" />
+                    <p:inputText id="firstname" value="#{personBean.firstName}" />
 
-
-                    <p:outputLabel for="surname" value="Surname:" />
-                    <p:inputText id="surname" value="#{personBean.surname}" />
+                    <p:outputLabel for="secondname" value="Second name" />
+                    <p:inputText id="secondname" value="#{personBean.secondName}" />
 
                     <f:facet name="footer">
                         <h:commandButton value="Next (Address)" action="address" />

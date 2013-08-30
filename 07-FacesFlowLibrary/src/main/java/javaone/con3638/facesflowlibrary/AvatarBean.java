@@ -20,15 +20,16 @@ import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
 
 /**
+ * Avatar bean used by avatarChooser flow.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named(value = "avatarBean")
 @FlowScoped("avatarChooser")
 public class AvatarBean {
 
-    private String surname;
-    private String givenname;
+    private String firstName;
+    private String secondName;
     private String avatar;
 
     public String getAvatar() {
@@ -39,20 +40,20 @@ public class AvatarBean {
         this.avatar = avatar;
     }
 
-    public String getSurname() {
-        return surname != null ? surname : "";
+    public String getFirstName() {
+        return firstName != null ? firstName : "";
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getGivenname() {
-        return givenname != null ? givenname : "";
+    public String getSecondName() {
+        return secondName != null ? secondName : "";
     }
 
-    public void setGivenname(String givenname) {
-        this.givenname = givenname;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
 }

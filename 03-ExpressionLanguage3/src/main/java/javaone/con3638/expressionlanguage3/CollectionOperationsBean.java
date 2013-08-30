@@ -22,8 +22,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
+ * Bean used for showing collection operations feature.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named("cob")
 @RequestScoped

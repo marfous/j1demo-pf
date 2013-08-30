@@ -21,8 +21,9 @@ import java.util.List;
 import javax.inject.Named;
 
 /**
+ * Bean used for showing EL 3.0 assignment operator feature.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named
 @javax.enterprise.context.RequestScoped

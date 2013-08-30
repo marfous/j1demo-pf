@@ -20,33 +20,35 @@ import javax.inject.Named;
 import javax.faces.flow.FlowScoped;
 
 /**
+ * Used for storing data of the person from the CredentialsFlow. The bean has
+ * FlowScoped scope which means that it loses its data by leaving the flow.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named(value = "personBean")
 @FlowScoped(CredentialsFlow.ID)
 public class PersonBean {
 
-    private String givenname;
-    private String surname;
+    private String firstName;
+    private String secondName;
     private String street;
     private String city;
     private String avatar;
 
-    public String getGivenname() {
-        return givenname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setGivenname(String givenname) {
-        this.givenname = givenname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public String getStreet() {
