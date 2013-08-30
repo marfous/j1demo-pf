@@ -20,17 +20,16 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+/**
+ * Holds only the information about used Resource Library Contract.
+ *
+ * @author Martin Fousek <marfous@netbeans.org>
+ */
 @Named
 @SessionScoped
 public class SetupBean implements Serializable {
 
     private String rlc = "rlc1";
-
-    /**
-     * Creates a new instance of SetupBean
-     */
-    public SetupBean() {
-    }
 
     public String getRlc() {
         return rlc;

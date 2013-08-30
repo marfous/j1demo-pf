@@ -2,9 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
     <body>
-
+        <!-- Here is called template which doens't exist in the document root. Instead of that
+            it's defined by the simple RLC - within the <docroot>/contracts/simple subdir. The
+            simple contract is used because it's only contract with template of such name. -->
         <ui:composition template="/simpleTemplate.xhtml">
 
             <ui:define name="top">
@@ -16,6 +17,5 @@
             </ui:define>
 
         </ui:composition>
-
     </body>
 </html>
