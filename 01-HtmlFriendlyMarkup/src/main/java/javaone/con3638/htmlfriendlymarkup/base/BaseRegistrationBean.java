@@ -22,6 +22,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+/**
+ * Empty java bean which handles only the form progress, save and reset.
+ *
+ * @author Martin Fousek <marfous@netbeans.org>
+ */
 @Named
 @SessionScoped
 public class BaseRegistrationBean implements Serializable {
@@ -29,12 +34,6 @@ public class BaseRegistrationBean implements Serializable {
     private String name;
     private String tel;
     private String email;
-
-    /**
-     * Creates a new instance of RegistrationBean
-     */
-    public BaseRegistrationBean() {
-    }
 
     public String getName() {
         return name;

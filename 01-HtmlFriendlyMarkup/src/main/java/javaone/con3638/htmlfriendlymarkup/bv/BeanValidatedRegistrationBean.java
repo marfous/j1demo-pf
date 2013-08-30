@@ -17,6 +17,8 @@
 package javaone.con3638.htmlfriendlymarkup.bv;
 
 import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -24,22 +26,28 @@ import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * All validation rules are defined by the bean's fields.
+ *
+ * @author Martin Fousek <marfous@netbeans.org>
+ */
 @Named
 @SessionScoped
 public class BeanValidatedRegistrationBean implements Serializable {
 
-    @Size(min = 1, message = "Name is mandatory")
+    // We are showing localized Bean Validation messages. Take a look inside the main/resources directory.
+    @Size(min = 1, message = "{NameMandatory}")
     private String name;
 
-    @Size(min = 1, message = "Telephone is mandatory")
-    @Pattern(regexp = "[0-9]+", message = "Telephone must be a number")
+    @Size(min = 1, message = "{TelephoneMandatory}")
+    @Pattern(regexp = "[0-9]+", message = "{TelephoneNotNumber}")
     private String tel;
 
-    @Size(min = 1, message = "Email is mandatory")
+    @Size(min = 1, message = "{EmailMandatory}")
     @Email
     private String email;
 
-    @Size(min = 1, message = "Avatar is mandatory")
+    @Size(min = 1, message = "{AvatarMandatory}")
     private String avatar;
 
     /**
@@ -89,7 +97,10 @@ public class BeanValidatedRegistrationBean implements Serializable {
     }
 
     public void savePerson() {
-        FacesContext.getCurrentInstance().addMessage("status", new FacesMessage(getName() + " was registered!"));
+        String confirmation = MessageFormat.format(
+                ResourceBundle.getBundle("Bundle").getString("successfulRegistration"),
+                getName());
+        FacesContext.getCurrentInstance().addMessage("status", new FacesMessage(confirmation));
         // save to DB
         reset();
     }

@@ -16,7 +16,6 @@
  */
 package javaone.con3638.htmlfriendlymarkup.bv;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,7 +24,11 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.constraints.Pattern;
 
-@Documented
+/**
+ * Custom validation annotation composed from existing rule (@Pattern).
+ *
+ * @author Martin Fousek <marfous@netbeans.org>
+ */
 @Constraint(validatedBy = {})
 @Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", message = "Invalid email format")
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
