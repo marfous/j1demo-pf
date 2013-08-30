@@ -12,6 +12,7 @@
         <script type="text/javascript" jsf:library="js" jsf:name="image-picker.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+                // Calls the imagePicker plugin on the JSF's h:selectOneMenu component
                 $("[name='#{imagePicker.clientId}']").imagepicker();
             });
         </script>
@@ -55,6 +56,7 @@
                         <td style="vertical-align: top"><label jsf:for="email">Avatar:</label></td>
                         <td colspan="2">
                             <h:selectOneMenu binding="#{imagePicker}" value="#{beanValidatedRegistrationBean.avatar}">
+                                <!-- Attributes with the the 'pass' prefix are passed to the compiled HTML template -->
                                 <f:selectItem pass:data-img-src="#{resource['img/avatar_java.jpg']}" itemValue="avatar_java.jpg"/>
                                 <f:selectItem pass:data-img-src="#{resource['img/avatar_netbeans.png']}" itemValue="avatar_netbeans.png"/>
                                 <f:selectItem pass:data-img-src="#{resource['img/avatar_primefaces.png']}" itemValue="avatar_primefaces.png"/>
