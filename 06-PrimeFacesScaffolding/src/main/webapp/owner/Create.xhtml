@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="OwnerCreateDlg" widgetVar="OwnerCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateOwnerTitle}">
+        <p:dialog id="OwnerCreateDlg" widgetVar="OwnerCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateOwnerTitle}">
 
             <h:form id="OwnerCreateForm">
 
@@ -21,7 +21,7 @@
                         <p:outputLabel value="#{myBundle.CreateOwnerLabel_name}" for="name" />
                         <p:inputText id="name" value="#{ownerController.selected.name}" title="#{myBundle.CreateOwnerTitle_name}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{ownerController.saveNew}" value="#{myBundle.Save}" update="display,:OwnerListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,OwnerCreateDialog);"/>
+                    <p:commandButton actionListener="#{ownerController.saveNew}" value="#{myBundle.Save}" update="display,:OwnerListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,'OwnerCreateDialog');"/>
                     <p:commandButton value="#{myBundle.Cancel}" onclick="OwnerCreateDialog.hide()"/>
                 </h:panelGroup>
 
