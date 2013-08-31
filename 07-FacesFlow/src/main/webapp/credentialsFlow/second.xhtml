@@ -4,7 +4,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Credentials Page</title>
@@ -31,7 +30,7 @@
                     <f:facet name="footer">
                         <!-- Using implicit navigation for the third, confirmation page -->
                         <h:commandButton value="Next (Confirmation)" action="third" />
-                        <h:commandButton value="Previous (Person)" action="#{credentialsFlow.id}" />
+                        <h:commandButton value="Previous (Person)" action="first" />
                     </f:facet>
                 </p:panelGrid>
                 <ui:include src="avatarPreview.xhtml"/>

@@ -49,7 +49,7 @@ import javax.inject.Named;
 
 /**
  * Defines the CredentialsFlow flow. It specifies the start node, view nodes and
- * related actions, return node, finalizer and more.
+ * related actions, flow call, return node, finalizer and more.
  *
  * @author Martin Fousek <marfous@netbeans.org>
  */
@@ -79,7 +79,7 @@ public class CredentialsFlow {
 
         // 3. page - we can use also implicit navigation/naming if the action is
         //   called as the view node
-        // flowBuilder.viewNode("third", "/" + ID + "/third.xhtml");
+//         flowBuilder.viewNode("third", "/" + ID + "/third.xhtml");
 
         // switch flow to the avatarChooser one
         flowBuilder.flowCallNode("chooseAvatar")
