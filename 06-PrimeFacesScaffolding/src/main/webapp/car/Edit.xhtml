@@ -36,7 +36,7 @@
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{carController.save}" value="#{myBundle.Save}" update="display,:CarListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CarEditDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="CarEditDialog.hide()"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('CarEditDialog').hide()"/>
                 </h:panelGroup>
 
             </h:form>

@@ -22,7 +22,7 @@
                         <p:inputText id="name" value="#{ownerController.selected.name}" title="#{myBundle.EditOwnerTitle_name}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ownerController.save}" value="#{myBundle.Save}" update="display,:OwnerListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,OwnerEditDialog);"/>
-                    <p:commandButton value="#{myBundle.Cancel}" onclick="OwnerEditDialog.hide()"/>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('OwnerEditDialog').hide()"/>
                 </h:panelGroup>
 
             </h:form>

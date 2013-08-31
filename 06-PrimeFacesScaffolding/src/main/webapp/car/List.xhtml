@@ -46,9 +46,9 @@
                     <h:outputText value="#{item.ownerId.name}"/>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{carController.prepareCreate}" update=":CarCreateForm" oncomplete="CarCreateDialog.show()"/>
-                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":CarViewForm" oncomplete="CarViewDialog.show()" disabled="#{empty carController.selected}"/>
-                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":CarEditForm" oncomplete="CarEditDialog.show()" disabled="#{empty carController.selected}"/>
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{carController.prepareCreate}" update=":CarCreateForm" oncomplete="PF('CarCreateDialog').show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{myBundle.View}" update=":CarViewForm" oncomplete="PF('CarViewDialog').show()" disabled="#{empty carController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":CarEditForm" oncomplete="PF('CarEditDialog').show()" disabled="#{empty carController.selected}"/>
                     <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{carController.delete}" update=":growl,datalist" disabled="#{empty carController.selected}"/>
                 </f:facet>
 
