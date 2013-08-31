@@ -29,7 +29,7 @@ import javax.faces.context.ResponseWriter;
  * can be called as "clock" tag (lowercased initial letter) and it's defined in
  * "http://xmlns.jcp.org/jsf/component" namespace.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @FacesComponent(createTag = true)
 public class Clock extends UIComponentBase {
@@ -43,14 +43,20 @@ public class Clock extends UIComponentBase {
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
+        // initialize javascripts
         renderJavaScriptTag(context, getResourcePath(context, "jquery.js"));
         renderJavaScriptTag(context, getResourcePath(context, "clock.js"));
-        
+
+        // include styles
         renderStylesheetTag(context, getResourcePath(context, "styles.css"));
 
+        // render component
         renderClockComponent(context);
     }
 
+    /**
+     * Renders the <link> tag.
+     */
     private static void renderStylesheetTag(FacesContext context, String src) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
         writer.append('\n');
@@ -62,6 +68,9 @@ public class Clock extends UIComponentBase {
         writer.append('\n');
     }
 
+    /**
+     * Renders the <script> tag.
+     */
     private static void renderJavaScriptTag(FacesContext context, String src) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
         writer.append('\n');
@@ -72,6 +81,9 @@ public class Clock extends UIComponentBase {
         writer.append('\n');
     }
 
+    /**
+     * Renders the component.
+     */
     private static void renderClockComponent(FacesContext context) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
         writer.append('\n');
@@ -103,6 +115,9 @@ public class Clock extends UIComponentBase {
         writer.append('\n');
     }
 
+    /**
+     * Gets resource path for the resource name.
+     */
     private static String getResourcePath(FacesContext context, String resourceName) {
         ResourceHandler handler = context.getApplication().getResourceHandler();
         Resource resource = handler.createResource(resourceName, COMPONENT_NAME);

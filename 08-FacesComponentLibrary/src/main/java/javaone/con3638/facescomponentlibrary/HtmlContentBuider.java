@@ -18,15 +18,14 @@ package javaone.con3638.facescomponentlibrary;
 
 import java.io.IOException;
 import javax.enterprise.context.Dependent;
-import javax.faces.application.Resource;
-import javax.faces.application.ResourceHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.inject.Named;
 
 /**
+ * Utility class which can render <script>, <style> tags into the writer.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
 @Named
 @Dependent
