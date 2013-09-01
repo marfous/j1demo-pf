@@ -59,4 +59,10 @@ public class ElProcessorBean {
         return EL_PROCESSOR.eval(MORE_EVALUATIONS);
     }
 
+    // Workaround for the issue https://java.net/jira/browse/EL_SPEC-16 in the
+    //  usage of static fields and methods within Facelet
+    public Object getEvaluatedValue(String expression) {
+        return EL_PROCESSOR.eval(expression);
+    }
+
 }

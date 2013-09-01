@@ -21,7 +21,9 @@
                 <code>\#{Integer.MAX_VALUE}</code>
             </p:column>
             <p:column>
-                #{Integer.MAX_VALUE}
+                <!-- Workaround for the issue https://java.net/jira/browse/EL_SPEC-16 in
+                    the usage of static fields and methods within Facelet. -->
+                <h:outputText value="#{elProcessorBean.getEvaluatedValue('Integer.MAX_VALUE')}"/>
             </p:column>
         </p:row>
         <p:row>
@@ -37,7 +39,9 @@
                 <code>\#{Integer.toHexString(16)}</code>
             </p:column>
             <p:column>
-                #{Integer.toHexString(16)}
+                <!-- Workaround for the issue https://java.net/jira/browse/EL_SPEC-16 in
+                    the usage of static fields and methods within Facelet. -->
+                <h:outputText value="#{elProcessorBean.getEvaluatedValue('Integer.toHexString(16)')}"/>
             </p:column>
         </p:row>
     </p:panelGrid>
