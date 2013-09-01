@@ -31,14 +31,14 @@ import javax.inject.Inject;
  * faces-config.xml file inside the META-INF directory to enable JSF component
  * detection.
  *
- * @author marfous
+ * @author Martin Fousek <marfous@netbeans.org>
  */
-@FacesComponent(value = "externalClockComponent",
-        createTag = true,
+@FacesComponent(createTag = true,
         tagName = "externalClockComponent",
         namespace = "http://xmlns.jcp.org/jsf/remoteLibrary")
-public class Clock extends UIComponentBase {
+public class ExternalClockComponent extends UIComponentBase {
 
+    // Since JSF 2.2, we are able to use CDI within the component definition
     @Inject
     HtmlContentBuider contentBuilder;
 

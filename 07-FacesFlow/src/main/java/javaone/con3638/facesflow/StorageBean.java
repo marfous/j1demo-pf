@@ -16,10 +16,15 @@
  */
 package javaone.con3638.facesflow;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -45,6 +50,10 @@ public class StorageBean extends PersonBean implements Serializable {
         setCity(personBean.getCity());
         setAvatar(personBean.getAvatar());
         isStorageUsed.set(true);
+
+        // this is hack to prevent second flow (avatarChooser) to be called back
+        //   since no flow is finished without calling its return node 
+        redirectAway();
     }
 
     public void restoreData() {
@@ -57,6 +66,15 @@ public class StorageBean extends PersonBean implements Serializable {
 
     public AtomicBoolean isStorageUsed() {
         return isStorageUsed;
+    }
+
+    private void redirectAway() {
+        try {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            externalContext.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath());
+        } catch (IOException ex) {
+            Logger.getLogger(StorageBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

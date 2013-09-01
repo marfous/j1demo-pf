@@ -12,16 +12,14 @@
     <h:body>
         <h1>Faces Component</h1>
         <p:panelGrid columns="2">
-
-            PrimeFaces Clock component:
+            <p:outputLabel value="PrimeFaces Clock component:"/>
             <p:clock/>
 
-            Custom component - defined locally:
+            <p:outputLabel value="Custom component - defined locally:"/>
             <local:clock/>
 
-            Custom component - defined in external .JAR:
+            <p:outputLabel value="Custom component - defined in external .JAR:"/>
             <remote:externalClockComponent/>
-
         </p:panelGrid>
     </h:body>
 </html>

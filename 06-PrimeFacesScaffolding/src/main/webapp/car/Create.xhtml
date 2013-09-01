@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{myBundle.CreateCarTitle}">
+        <p:dialog id="CarCreateDlg" widgetVar="CarCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateCarTitle}">
 
             <h:form id="CarCreateForm">
 
@@ -34,7 +34,7 @@
                                            />
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{carController.saveNew}" value="#{myBundle.Save}" update="display,:CarListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CarCreateDialog);"/>
+                    <p:commandButton actionListener="#{carController.saveNew}" value="#{myBundle.Save}" update="display,:CarListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,'CarCreateDialog');"/>
                     <p:commandButton value="#{myBundle.Cancel}" onclick="CarCreateDialog.hide()"/>
                 </h:panelGroup>
 
