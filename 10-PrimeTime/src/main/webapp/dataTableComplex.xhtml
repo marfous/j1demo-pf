@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Complex Data Table</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:messages autoUpdate="true"/>
+            
+            <p:panel header="New Car" style="width: 90%">
+                <h:panelGrid id="grid" columns="3" cellpadding="5">
+                    <h:outputLabel for="model" value="Model:" style="font-weight:bold"/>					
+                    <p:inputText id="model" value="#{tableBean.newCar.model}" required="true" label="Name"/>
+                    <p:message for="model" display="text" />
+
+                    <h:outputLabel for="year" value="Year:" style="font-weight:bold"/>					
+                    <p:inputText id="year" value="#{tableBean.newCar.year}" label="Year">
+                        <f:validateLongRange minimum="1930" />
+                    </p:inputText>
+                    <p:message for="year" display="both" />
+
+                    <h:outputLabel for="manufacturer" value="Manufacturer" style="font-weight:bold"/>					
+                    <p:inputText id="manufacturer" value="#{tableBean.newCar.manufacturer}" required="true" requiredMessage="Manufacturer cannot be empty. You should've input a German brand dude!" />
+                    <p:message for="manufacturer" display="icon" />
+
+                    <h:outputLabel for="color" value="Color" style="font-weight:bold"/>					
+                    <p:inputText id="color" value="#{tableBean.newCar.color}" label="Color" />
+                    <p:message for="color" display="icon" />
+
+                    <p:commandButton id="emptyList" value="Empty List" icon="ui-icon-closethick" process="@this" update="carsTable" actionListener="#{tableBean.emptyList}" />
+                    <p:commandButton id="save" value="Save with Non-Ajax" icon="ui-icon-check" validateClient="true" ajax="false" actionListener="#{tableBean.saveCar}" />
+                </h:panelGrid>
+            </p:panel>
+            
+            <br/>
+            <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
+                         selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">
+
+                <f:facet name="header">
+                    List of Cars
+                </f:facet>
+
+                <p:column headerText="Model" sortBy="model" filterBy="model" id="modelColumn">
+                    #{car.model}
+                </p:column>
+
+                <p:column headerText="Year" sortBy="year" filterBy="year" id="yearColumn">
+                    #{car.year}
+                </p:column>
+
+                <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturerColumn">
+                    #{car.manufacturer}
+                </p:column>
+
+                <p:column headerText="Color" sortBy="color" filterBy="color" id="colorColumn">
+                    #{car.color}
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
+

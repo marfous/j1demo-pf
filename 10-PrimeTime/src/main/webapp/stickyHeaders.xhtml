@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Complex Data Table</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" stickyHeader="true"
+                        selection="#{tableBean.selectedCar}" filteredValue="#{tableBean.filteredCars}" id="carsTable">
+
+                <f:facet name="header">
+                    List of Cars
+                </f:facet>
+
+                <p:column headerText="Model" sortBy="model" filterBy="model" id="model">
+                    #{car.model}
+                </p:column>
+
+                <p:column headerText="Year" sortBy="year" filterBy="year" id="year">
+                    #{car.year}
+                </p:column>
+
+                <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturer">
+                    #{car.manufacturer}
+                </p:column>
+
+                <p:column headerText="Color" sortBy="color" filterBy="color" id="color">
+                    #{car.color}"
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
