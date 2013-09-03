@@ -24,10 +24,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ActionEvent;
 
-/**
- *
- * @author mertcaliskan
- */
+
 @Named(value = "tableBean")
 @SessionScoped
 public class TableBean implements Serializable {
