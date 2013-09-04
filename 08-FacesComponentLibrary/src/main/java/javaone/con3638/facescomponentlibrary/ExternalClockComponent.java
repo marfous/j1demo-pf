@@ -34,7 +34,7 @@ import javax.inject.Inject;
  * @author Martin Fousek <marfous@netbeans.org>
  */
 @FacesComponent(createTag = true,
-        tagName = "externalClockComponent",
+        tagName = "clockFromJAR",
         namespace = "http://xmlns.jcp.org/jsf/remoteLibrary")
 public class ExternalClockComponent extends UIComponentBase {
 
