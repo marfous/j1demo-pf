@@ -1,16 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>File Upload With Validation</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form id="form" enctype="multipart/form-data">
             <h:messages />
-            <h:inputFile id="file3" value="#{fileUploadBean.file3}" 
-                validator="#{fileUploadBean.validateFile}" />
-            <h:commandButton value="Upload (Validation)" action="#{fileUploadBean.uploadValidated}" />
+            <p:panel header="File Upload with Validation">
+                <h:panelGrid columns="1">
+                    <h:inputFile id="file" value="#{validatedFileUploadBean.file}" 
+                                 validator="#{validatedFileUploadBean.validateFile}" />
+                    <h:commandButton value="Upload with Validation" action="#{validatedFileUploadBean.upload}" />
+                </h:panelGrid>
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;h:inputFile&nbsp;id=</span><span class="string">"file"</span><span>&nbsp;value=</span><span class="string">"\#{validatedFileUploadBean.file}"</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validator=<span class="string">"\#{validatedFileUploadBean.validateFile}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&lt;h:commandButton&nbsp;value=<span class="string">"Upload&nbsp;with&nbsp;Validation"</span><span>&nbsp;action=</span><span class="string">"\#{validatedFileUploadBean.upload}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;h:inputFile id="file" value="\#{validatedFileUploadBean.file}" 
+                                        validator="\#{validatedFileUploadBean.validateFile}" /&gt;
+                    &lt;h:commandButton value="Upload with Validation" action="\#{validatedFileUploadBean.upload}" /&gt;
+                    </textarea></div>                    
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>import&nbsp;javax.servlet.http.Part;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>@Named(value&nbsp;=&nbsp;<span class="string">"validatedFileUploadBean"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>@RequestScoped&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;ValidatedFileUploadBean&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;Part&nbsp;file;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;Part&nbsp;getFile()&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;file;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setFile(Part&nbsp;file)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.file&nbsp;=&nbsp;file;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;validateFile(FacesContext&nbsp;ctx,&nbsp;UIComponent&nbsp;comp,&nbsp;Object&nbsp;value)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&lt;FacesMessage&gt;&nbsp;msgs&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;ArrayList&lt;&gt;();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Part&nbsp;file&nbsp;=&nbsp;(Part)&nbsp;value;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(file.getSize()&nbsp;&gt;&nbsp;1024)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msgs.add(<span class="keyword">new</span><span>&nbsp;FacesMessage(</span><span class="string">"file&nbsp;is&nbsp;too&nbsp;big&nbsp;dude!"</span><span>));&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!msgs.isEmpty())&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throw</span><span>&nbsp;</span><span class="keyword">new</span><span>&nbsp;ValidatorException(msgs);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;upload()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;fileContent&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;Scanner(file.getInputStream()).next();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;do&nbsp;some&nbsp;crazy&nbsp;stuff&nbsp;on&nbsp;content</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">catch</span><span>&nbsp;(IOException&nbsp;e)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.print(e);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    import javax.servlet.http.Part;
+
+
+                    @Named(value = "validatedFileUploadBean")
+                    @RequestScoped
+                    public class ValidatedFileUploadBean {
+
+                        private Part file;
+
+                        public Part getFile() {
+                            return file;
+                        }
+
+                        public void setFile(Part file) {
+                            this.file = file;
+                        }
+
+                        public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
+                            List&lt;FacesMessage&gt; msgs = new ArrayList&lt;&gt;();
+                            Part file = (Part) value;
+
+                            if (file.getSize() &gt; 1024) {
+                              msgs.add(new FacesMessage("file is too big dude!"));
+                            }
+
+                            if (!msgs.isEmpty()) {
+                              throw new ValidatorException(msgs);
+                            }
+                        }    
+
+                        public void upload() {
+                            try {
+                              String fileContent = new Scanner(file.getInputStream()).next();
+                              // do some crazy stuff on content
+                            } 
+                            catch (IOException e) {
+                                System.err.print(e);
+                            }
+                        }
+                    }</textarea></div>                    
+                </p:tab>
+            </p:tabView>
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" />
         </h:form>
     </h:body>
 </html>

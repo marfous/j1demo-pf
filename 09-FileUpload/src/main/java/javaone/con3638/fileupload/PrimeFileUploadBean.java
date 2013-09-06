@@ -16,40 +16,31 @@
  */
 package javaone.con3638.fileupload;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
-import javax.servlet.http.Part;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 
-@Named(value = "fileUploadBean")
+@Named(value = "primeFileUploadBean")
 @RequestScoped
-public class FileUploadBean {
+public class PrimeFileUploadBean {
 
-    private Part file;
+    private UploadedFile file;
     
-    public void upload() {
-        try {
-          String fileContent = new Scanner(file.getInputStream()).next();
-          // do some crazy stuff on content
-        } 
-        catch (IOException e) {
-            System.err.print(e);
-        }
-    }
-
-    public Part getFile() {
+    public UploadedFile getFile() {
         return file;
     }
 
-    public void setFile(Part file) {
+    public void setFile(UploadedFile file) {
         this.file = file;
+    }    
+    
+    public void uploadPrime(FileUploadEvent event) {
+        UploadedFile file = event.getFile();
+        FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");  
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
     }
 }

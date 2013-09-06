@@ -8,8 +8,9 @@
     </h:head>
     <h:body>
         <h:form id="form" enctype="multipart/form-data">
-            <h:messages />
-            <p:fileUpload value="#{fileUploadBean.file4}" fileUploadListener="#{fileUploadBean.uploadPrime}" />
+            <p:growl id="messages" showDetail="true"/> 
+            <p:fileUpload value="#{primeFileUploadBean.file}" multiple="true" update="messages"
+                          fileUploadListener="#{primeFileUploadBean.upload}" />
         </h:form>
     </h:body>
 </html>

@@ -28,22 +28,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
-
-@Named(value = "fileUploadBean")
+@Named(value = "ajaxFileUploadBean")
 @RequestScoped
-public class FileUploadBean {
+public class AjaxFileUploadBean {
 
     private Part file;
-    
-    public void upload() {
-        try {
-          String fileContent = new Scanner(file.getInputStream()).next();
-          // do some crazy stuff on content
-        } 
-        catch (IOException e) {
-            System.err.print(e);
-        }
-    }
 
     public Part getFile() {
         return file;
@@ -51,5 +40,14 @@ public class FileUploadBean {
 
     public void setFile(Part file) {
         this.file = file;
+    }
+    
+    public void upload() {
+        try {
+            String fileContent = new Scanner(file.getInputStream()).next();
+            // do some crazy stuff on content
+        } catch (IOException e) {
+            System.err.print(e);
+        }
     }
 }

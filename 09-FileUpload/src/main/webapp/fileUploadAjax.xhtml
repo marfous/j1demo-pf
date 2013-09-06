@@ -2,19 +2,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Ajax File Upload</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form id="form" enctype="multipart/form-data">
-            <h:panelGrid columns="1">
-                <h:inputFile id="file2" value="#{fileUploadBean.file2}" />
-                <h:commandButton value="Upload" action="#{fileUploadBean.uploadAjax}">
-                    <f:ajax execute="file2" render="file2 content" />
-                </h:commandButton>
-                <h:inputTextarea id="content" value="#{fileUploadBean.file2.submittedFileName}" />
-            </h:panelGrid>
+            <p:panel header="File Upload with Ajax">
+                <h:panelGrid columns="1">
+                    <h:inputFile id="file" value="#{ajaxFileUploadBean.file}" />
+                    <h:commandButton value="Upload" action="#{ajaxFileUploadBean.upload}">
+                        <f:ajax execute="file" render="file fileName" />
+                    </h:commandButton>
+                    <h:outputText id="fileName" value="Uploaded File Name: #{ajaxFileUploadBean.file.submittedFileName}" />
+                </h:panelGrid>
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource', this);
+                            return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard', this);
+                            return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource', this);
+                            return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About', this);
+                            return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;h:inputFile&nbsp;id=</span><span class="string">"file"</span><span>&nbsp;value=</span><span class="string">"\#{ajaxFileUploadBean.file}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;h:commandButton&nbsp;value=<span class="string">"Upload"</span><span>&nbsp;action=</span><span class="string">"\#{ajaxFileUploadBean.upload}"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;f:ajax&nbsp;execute=<span class="string">"file"</span><span>&nbsp;render=</span><span class="string">"file&nbsp;fileName"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;/h:commandButton&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;h:outputText&nbsp;id=<span class="string">"fileName"</span><span>&nbsp;value=</span><span class="string">"\#{ajaxFileUploadBean.file.submittedFileName}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;h:inputFile id="file" value="\#{ajaxFileUploadBean.file}" /&gt;
+                    &lt;h:commandButton value="Upload" action="\#{ajaxFileUploadBean.upload}"&gt;
+                          &lt;f:ajax execute="file" render="file fileName" /&gt;
+                    &lt;/h:commandButton&gt;
+                    &lt;h:outputText id="fileName" value="\#{ajaxFileUploadBean.file.submittedFileName}" /&gt;
+</textarea></div>
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource', this);
+                    return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard', this);
+                    return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource', this);
+                    return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About', this);
+                    return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>import&nbsp;javax.servlet.http.Part;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>@Named(value&nbsp;=&nbsp;<span class="string">"ajaxFileUploadBean"</span><span>)&nbsp;&nbsp;</span></span></li><li class=""><span>@RequestScoped&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;AjaxFileUploadBean&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;Part&nbsp;file;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;Part&nbsp;getFile()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;file;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setFile(Part&nbsp;file)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.file&nbsp;=&nbsp;file;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;upload()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;fileContent&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;Scanner(file.getInputStream()).next();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;do&nbsp;some&nbsp;crazy&nbsp;stuff&nbsp;on&nbsp;content</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">catch</span><span>&nbsp;(IOException&nbsp;e)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.err.print(e);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    import javax.servlet.http.Part;
+
+                    @Named(value = "ajaxFileUploadBean")
+                    @RequestScoped
+                    public class AjaxFileUploadBean {
+
+                        private Part file;
+
+                        public Part getFile() {
+                            return file;
+                        }
+
+                        public void setFile(Part file) {
+                            this.file = file;
+                        }
+
+                        public void upload() {
+                            try {
+                                String fileContent = new Scanner(file.getInputStream()).next();
+                                // do some crazy stuff on content
+                            } catch (IOException e) {
+                                System.err.print(e);
+                            }
+                        }
+                    }
+                    </textarea></div>                    
+                </p:tab>
+            </p:tabView>
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" />
         </h:form>
     </h:body>
 </html>

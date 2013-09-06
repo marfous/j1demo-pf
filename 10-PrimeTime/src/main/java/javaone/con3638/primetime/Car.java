@@ -17,13 +17,17 @@
 package javaone.con3638.primetime;
 
 import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 public class Car implements Serializable {
 
     public String model;
     public int year;
     public String manufacturer;
+    
+    @NotNull
     public String color;
+    
     public int price;
 
     public Car() {

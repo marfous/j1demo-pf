@@ -29,11 +29,32 @@ import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
 
-@Named(value = "fileUploadBean")
+@Named(value = "validatedFileUploadBean")
 @RequestScoped
-public class FileUploadBean {
+public class ValidatedFileUploadBean {
 
     private Part file;
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
+    }
+
+    public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
+        List<FacesMessage> msgs = new ArrayList<>();
+        Part file = (Part) value;
+
+        if (file.getSize() > 1024) {
+          msgs.add(new FacesMessage("file is too big dude!"));
+        }
+
+        if (!msgs.isEmpty()) {
+          throw new ValidatorException(msgs);
+        }
+    }    
     
     public void upload() {
         try {
@@ -43,13 +64,5 @@ public class FileUploadBean {
         catch (IOException e) {
             System.err.print(e);
         }
-    }
-
-    public Part getFile() {
-        return file;
-    }
-
-    public void setFile(Part file) {
-        this.file = file;
     }
 }
