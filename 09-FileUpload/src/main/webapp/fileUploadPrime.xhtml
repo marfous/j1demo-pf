@@ -5,12 +5,85 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>File Upload With PrimeFaces</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form id="form" enctype="multipart/form-data">
             <p:growl id="messages" showDetail="true"/> 
-            <p:fileUpload value="#{primeFileUploadBean.file}" multiple="true" update="messages"
-                          fileUploadListener="#{primeFileUploadBean.upload}" />
+            <p:panel header="PrimeFaces File Upload Component">
+                <p:fileUpload value="#{primeFileUploadBean.file}" multiple="true" update="messages"
+                              fileUploadListener="#{primeFileUploadBean.upload}" />
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource', this);
+                            return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard', this);
+                            return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource', this);
+                            return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About', this);
+                            return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;p:fileUpload&nbsp;value=</span><span class="string">"\#{primeFileUploadBean.file}"</span><span>&nbsp;multiple=</span><span class="string">"true"</span><span>&nbsp;update=</span><span class="string">"messages"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileUploadListener=<span class="string">"\#{primeFileUploadBean.upload}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;p:fileUpload value="\#{primeFileUploadBean.file}" multiple="true" update="messages"
+                                     fileUploadListener="\#{primeFileUploadBean.upload}" /&gt;
+                    </textarea></div>                    
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource', this);
+                                    return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard', this);
+                                    return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource', this);
+                                    return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About', this);
+                                    return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>import&nbsp;org.primefaces.model.UploadedFile;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>@Named(value&nbsp;=&nbsp;<span class="string">"primeFileUploadBean"</span><span>)&nbsp;&nbsp;</span></span></li><li class="alt"><span>@RequestScoped&nbsp;&nbsp;</span></li><li class=""><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;PrimeFileUploadBean&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;UploadedFile&nbsp;file;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;UploadedFile&nbsp;getFile()&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;file;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setFile(UploadedFile&nbsp;file)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.file&nbsp;=&nbsp;file;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;upload(FileUploadEvent&nbsp;event)&nbsp;{&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;=&nbsp;event.getFile();&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FacesMessage&nbsp;msg&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;FacesMessage(</span><span class="string">"Successful"</span><span>,&nbsp;file.getFileName()&nbsp;+&nbsp;</span><span class="string">"&nbsp;is&nbsp;uploaded."</span><span>);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FacesContext.getCurrentInstance().addMessage(null,&nbsp;msg);&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    import org.primefaces.model.UploadedFile;
+
+
+                    @Named(value = "primeFileUploadBean")
+                    @RequestScoped
+                    public class PrimeFileUploadBean {
+
+                        private UploadedFile file;
+
+                        public UploadedFile getFile() {
+                            return file;
+                        }
+
+                        public void setFile(UploadedFile file) {
+                            this.file = file;
+                        }    
+
+                        public void upload(FileUploadEvent event) {
+                            file = event.getFile();
+                            FacesMessage msg = new FacesMessage("Successful", file.getFileName() + " is uploaded.");  
+                            FacesContext.getCurrentInstance().addMessage(null, msg);  
+                        }
+                    }
+                    </textarea></div>                    
+                </p:tab>
+                <p:tab title="3.5.X">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;filter&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;PrimeFaces&nbsp;FileUpload&nbsp;Filter&lt;/filter-name&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-<span class="keyword">class</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.primefaces.webapp.filter.FileUploadFilter&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter-<span class="keyword">class</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;/filter&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;filter-mapping&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;PrimeFaces&nbsp;FileUpload&nbsp;Filter&lt;/filter-name&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;servlet-name&gt;Faces&nbsp;Servlet&lt;/servlet-name&gt;&nbsp;&nbsp;</span></li><li class=""><span>&lt;/filter-mapping&gt;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;filter&gt;
+                        &lt;filter-name&gt;PrimeFaces FileUpload Filter&lt;/filter-name&gt;
+                        &lt;filter-class&gt;
+                            org.primefaces.webapp.filter.FileUploadFilter
+                        &lt;/filter-class&gt;
+                    &lt;/filter&gt;
+                    &lt;filter-mapping&gt;
+                        &lt;filter-name&gt;PrimeFaces FileUpload Filter&lt;/filter-name&gt;
+                        &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                    &lt;/filter-mapping&gt;
+                   </textarea></div>                    
+                </p:tab>
+                <p:tab title="4.0">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;context-param&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-name&gt;primefaces.UPLOADER&lt;/param-name&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-value&gt;auto&nbsp;|&nbsp;native&nbsp;|&nbsp;commons&lt;/param-value&gt;&nbsp;&nbsp;</span></li><li class=""><span>&lt;/context-param&gt;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;context-param&gt;
+                            &lt;param-name&gt;primefaces.UPLOADER&lt;/param-name&gt;
+                            &lt;param-value&gt;auto | native | commons&lt;/param-value&gt;
+                    &lt;/context-param&gt;</textarea></div>                    
+                </p:tab>
+            </p:tabView>
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
         </h:form>
     </h:body>
 </html>

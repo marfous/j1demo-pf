@@ -38,9 +38,9 @@ public class PrimeFileUploadBean {
         this.file = file;
     }    
     
-    public void uploadPrime(FileUploadEvent event) {
-        UploadedFile file = event.getFile();
-        FacesMessage msg = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");  
+    public void upload(FileUploadEvent event) {
+        file = event.getFile();
+        FacesMessage msg = new FacesMessage("Successful", file.getFileName() + " is uploaded.");  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
     }
 }
