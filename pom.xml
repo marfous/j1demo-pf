@@ -20,6 +20,7 @@
         <module>08-FacesComponentLibrary</module>
         <module>09-FileUpload</module>
         <module>10-PrimeTime</module>
+    <module>SyntaxHighlighter</module>
   </modules>
 
 </project>
