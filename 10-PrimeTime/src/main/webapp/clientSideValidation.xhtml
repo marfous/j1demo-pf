@@ -21,7 +21,7 @@
                     <p:inputText id="year" value="#{tableBean.newCar.year}" label="Year">
                         <f:validateLongRange minimum="1930" />
                     </p:inputText>
-                    <p:message for="year" display="both" />
+                    <p:message for="year" display="tooltip" />
 
                     <h:outputLabel for="manufacturer" value="Manufacturer" style="font-weight:bold"/>					
                     <p:inputText id="manufacturer" value="#{tableBean.newCar.manufacturer}" required="true" requiredMessage="Manufacturer cannot be empty. You should've input a German brand dude!" />
@@ -29,7 +29,7 @@
 
                     <h:outputLabel for="color" value="Color" style="font-weight:bold"/>					
                     <p:inputText id="color" value="#{tableBean.newCar.color}" label="Color" />
-                    <p:message for="color" display="icon" />
+                    <p:message for="color" display="both" />
 
                     <p:commandButton id="emptyList" value="Empty List" icon="ui-icon-closethick" process="@this" update="carsTable" actionListener="#{tableBean.emptyList}" />
                     <p:commandButton id="save" value="Save with Non-Ajax" icon="ui-icon-check" validateClient="true" ajax="false" actionListener="#{tableBean.saveCar}" />
@@ -40,6 +40,8 @@
             <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
                          selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">
 
+                <p:ajax event="rowSelect" update=":form:display" oncomplete="carDialog.show()" />  
+                   
                 <f:facet name="header">
                     List of Cars
                 </f:facet>
@@ -59,8 +61,30 @@
                 <p:column headerText="Color" sortBy="color" filterBy="color" id="colorColumn">
                     #{car.color}
                 </p:column>
-
             </p:dataTable>
+            
+            <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false"  
+                        width="300" showEffect="explode" hideEffect="explode">  
+
+                  <h:panelGrid id="display" columns="2" cellpadding="4">  
+
+                      <f:facet name="header">  
+                          <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+                      </f:facet>  
+
+                      <h:outputText value="Model:" />  
+                      <h:outputText value="#{tableBean.selectedCar.model}" id="modelOut"/>  
+
+                      <h:outputText value="Year:" />  
+                      <h:outputText value="#{tableBean.selectedCar.year}" id="yearOut" />  
+
+                      <h:outputText value="Manufacturer:" />  
+                      <h:outputText value="#{tableBean.selectedCar.manufacturer}" id="manufacturerOut" />  
+
+                      <h:outputText value="Color:" />  
+                      <h:outputText value="#{tableBean.selectedCar.color}" id="colorOut" />  
+                  </h:panelGrid>  
+              </p:dialog>              
 
         </h:form>
     </h:body>
