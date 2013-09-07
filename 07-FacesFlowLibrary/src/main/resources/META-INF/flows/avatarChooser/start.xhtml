@@ -6,6 +6,7 @@
       xmlns:pass="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <h:outputStylesheet name='css/image-picker.css'/>
@@ -41,5 +42,7 @@
                 </f:facet>
             </p:panelGrid>
         </h:form>
+        
+        <ui:include src="syntaxHighlighter.xhtml"/>
     </h:body>
 </html>
