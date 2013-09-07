@@ -3,71 +3,175 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head jsf:id="head">
         <title>HTML(5) Friendly Markup Samples - Registration Form</title>
+        <style type="text/css">.ui-panelgrid td, .ui-panelgrid tr { border-style: none !important }</style>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />
     </head>
     <body jsf:id="body">
         <form jsf:id="registrationForm">
             <p:panel id="panel" header="Registration Form">
                 <p:messages id="status"/>
-                <table>
-                    <tr>
-                        <!-- TagDecorator translates this component as a "h:outputLabel" element before compiling by TagHandler-->
-                        <td><label jsf:for="name">Name:</label></td>
-                        <td>
-                           <!-- Validation here can be messy, the second form shows the better way - using Bean Validation API -->
-                            <input jsf:id="name" type="text" jsf:value="#{baseRegistrationBean.name}"
-                                   jsf:requiredMessage="Name is required"
-                                   jsf:required="true">
-                                <f:ajax execute="@this" render="nameMessage progress"/>
-                            </input>
-                        </td>
-                        <td><p:message id="nameMessage" for="name" /></td>
-                    </tr>
+                <p:panelGrid columns="3">
+                    <!-- TagDecorator translates this component as a "h:outputLabel" element before compiling by TagHandler-->
+                    <label jsf:for="name">Name:</label>
 
-                    <tr>
-                        <td><label jsf:for="tel">Telephone:</label></td>
-                        <td>
-                            <input jsf:id="tel" type="text" jsf:value="#{baseRegistrationBean.tel}"
-                                   jsf:required="true"
-                                   jsf:requiredMessage="Telephone is required"
-                                   jsf:validatorMessage="Must be a number">
-                                <f:ajax execute="@this" render="telMessage progress"/>
-                                <f:validateRegex pattern="[0-9]+"/>
-                            </input>
-                        </td>
-                        <td><p:message id="telMessage" for="tel" /></td>
-                    </tr>
+                    <!-- Validation here can be messy, the second form shows the better way - using Bean Validation API -->
+                    <input jsf:id="name" type="text" jsf:value="#{baseRegistrationBean.name}"
+                           jsf:requiredMessage="Name is required"
+                           jsf:required="true">
+                        <f:ajax execute="@this" render="nameMessage progress"/>
+                    </input>
+                    <p:column><p:message id="nameMessage" for="name" /></p:column>
 
-                    <tr>
-                        <td><label jsf:for="email">Email:</label></td>
-                        <td>
-                            <input jsf:id="email" type="email" jsf:value="#{baseRegistrationBean.email}"
+                    <label jsf:for="tel">Telephone:</label>
+                    <input jsf:id="tel" type="text" jsf:value="#{baseRegistrationBean.tel}"
+                           jsf:required="true"
+                           jsf:requiredMessage="Telephone is required"
+                           jsf:validatorMessage="Must be a number">
+                        <f:ajax execute="@this" render="telMessage progress"/>
+                        <f:validateRegex pattern="[0-9]+"/>
+                    </input>
+                    <p:message id="telMessage" for="tel" />
+
+                    <label jsf:for="email">Email:</label>
+                    <input jsf:id="email" type="email" jsf:value="#{baseRegistrationBean.email}"
+                           jsf:required="true"
+                           jsf:requiredMessage="Email is required"
+                           jsf:validatorMessage="Invalid email format">
+                        <f:ajax execute="@this" render="emailMessage progress"/>
+                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                    </input>
+                    <p:message id="emailMessage" for="email" />
+
+                    <p:column/>
+                    <progress jsf:id="progress" value="#{baseRegistrationBean.progress}" max="3"/>
+                    <p:column/>
+
+                    <p:column/>
+                    <p:column>
+                        <input jsf:update="panel" jsf:actionListener="#{baseRegistrationBean.savePerson}" type="submit" value="Submit" />
+                        <input type="button" jsf:value="Back to index" jsf:ajax="true" jsf:outcome="index" />
+                    </p:column>
+                    <p:column/>
+                </p:panelGrid>
+            </p:panel>
+
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-xml" start="1"><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">p:panelGrid</span><span>&nbsp;</span><span class="attribute">columns</span><span>=</span><span class="attribute-value">"3"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;TagDecorator&nbsp;translates&nbsp;this&nbsp;component&nbsp;as&nbsp;a&nbsp;"h:outputLabel"&nbsp;element&nbsp;before&nbsp;compiling&nbsp;by&nbsp;TagHandler--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">label</span><span>&nbsp;</span><span class="attribute">jsf:for</span><span>=</span><span class="attribute-value">"name"</span><span class="tag">&gt;</span><span>Name:</span><span class="tag">&lt;/</span><span class="tag-name">label</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;Validation&nbsp;here&nbsp;can&nbsp;be&nbsp;messy,&nbsp;the&nbsp;second&nbsp;form&nbsp;shows&nbsp;the&nbsp;better&nbsp;way&nbsp;-&nbsp;using&nbsp;Bean&nbsp;Validation&nbsp;API&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">input</span><span>&nbsp;</span><span class="attribute">jsf:id</span><span>=</span><span class="attribute-value">"name"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text"</span><span>&nbsp;</span><span class="attribute">jsf:value</span><span>=</span><span class="attribute-value">"\#{baseRegistrationBean.name}"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:requiredMessage</span><span>=</span><span class="attribute-value">"Name&nbsp;is&nbsp;required"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:required</span><span>=</span><span class="attribute-value">"true"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">f:ajax</span><span>&nbsp;</span><span class="attribute">execute</span><span>=</span><span class="attribute-value">"@this"</span><span>&nbsp;</span><span class="attribute">render</span><span>=</span><span class="attribute-value">"nameMessage&nbsp;progress"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">input</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">p:message</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"nameMessage"</span><span>&nbsp;</span><span class="attribute">for</span><span>=</span><span class="attribute-value">"name"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span class="tag">&lt;/</span><span class="tag-name">p:column</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">label</span><span>&nbsp;</span><span class="attribute">jsf:for</span><span>=</span><span class="attribute-value">"tel"</span><span class="tag">&gt;</span><span>Telephone:</span><span class="tag">&lt;/</span><span class="tag-name">label</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">input</span><span>&nbsp;</span><span class="attribute">jsf:id</span><span>=</span><span class="attribute-value">"tel"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text"</span><span>&nbsp;</span><span class="attribute">jsf:value</span><span>=</span><span class="attribute-value">"\#{baseRegistrationBean.tel}"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:required</span><span>=</span><span class="attribute-value">"true"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:requiredMessage</span><span>=</span><span class="attribute-value">"Telephone&nbsp;is&nbsp;required"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:validatorMessage</span><span>=</span><span class="attribute-value">"Must&nbsp;be&nbsp;a&nbsp;number"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">f:ajax</span><span>&nbsp;</span><span class="attribute">execute</span><span>=</span><span class="attribute-value">"@this"</span><span>&nbsp;</span><span class="attribute">render</span><span>=</span><span class="attribute-value">"telMessage&nbsp;progress"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">f:validateRegex</span><span>&nbsp;</span><span class="attribute">pattern</span><span>=</span><span class="attribute-value">"[0-9]+"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">input</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:message</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"telMessage"</span><span>&nbsp;</span><span class="attribute">for</span><span>=</span><span class="attribute-value">"tel"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">label</span><span>&nbsp;</span><span class="attribute">jsf:for</span><span>=</span><span class="attribute-value">"email"</span><span class="tag">&gt;</span><span>Email:</span><span class="tag">&lt;/</span><span class="tag-name">label</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">input</span><span>&nbsp;</span><span class="attribute">jsf:id</span><span>=</span><span class="attribute-value">"email"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"email"</span><span>&nbsp;</span><span class="attribute">jsf:value</span><span>=</span><span class="attribute-value">"\#{baseRegistrationBean.email}"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:required</span><span>=</span><span class="attribute-value">"true"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:requiredMessage</span><span>=</span><span class="attribute-value">"Email&nbsp;is&nbsp;required"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">jsf:validatorMessage</span><span>=</span><span class="attribute-value">"Invalid&nbsp;email&nbsp;format"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">f:ajax</span><span>&nbsp;</span><span class="attribute">execute</span><span>=</span><span class="attribute-value">"@this"</span><span>&nbsp;</span><span class="attribute">render</span><span>=</span><span class="attribute-value">"emailMessage&nbsp;progress"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">f:validateRegex</span><span>&nbsp;</span><span class="attribute">pattern</span><span>=</span><span class="attribute-value">"^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">input</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:message</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"emailMessage"</span><span>&nbsp;</span><span class="attribute">for</span><span>=</span><span class="attribute-value">"email"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">progress</span><span>&nbsp;</span><span class="attribute">jsf:id</span><span>=</span><span class="attribute-value">"progress"</span><span>&nbsp;</span><span class="attribute">value</span><span>=</span><span class="attribute-value">"\#{baseRegistrationBean.progress}"</span><span>&nbsp;</span><span class="attribute">max</span><span>=</span><span class="attribute-value">"3"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">input</span><span>&nbsp;</span><span class="attribute">jsf:update</span><span>=</span><span class="attribute-value">"panel"</span><span>&nbsp;</span><span class="attribute">jsf:actionListener</span><span>=</span><span class="attribute-value">"\#{baseRegistrationBean.savePerson}"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"submit"</span><span>&nbsp;</span><span class="attribute">value</span><span>=</span><span class="attribute-value">"Submit"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">input</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"button"</span><span>&nbsp;</span><span class="attribute">jsf:value</span><span>=</span><span class="attribute-value">"Back&nbsp;to&nbsp;index"</span><span>&nbsp;</span><span class="attribute">jsf:ajax</span><span>=</span><span class="attribute-value">"true"</span><span>&nbsp;</span><span class="attribute">jsf:outcome</span><span>=</span><span class="attribute-value">"index"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">p:column</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">p:column</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="tag">&lt;/</span><span class="tag-name">p:panelGrid</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">&lt;p:panelGrid columns="3"&gt;
+                        &lt;!-- TagDecorator translates this component as a "h:outputLabel" element before compiling by TagHandler--&gt;
+                        &lt;label jsf:for="name"&gt;Name:&lt;/label&gt;
+
+                        &lt;!-- Validation here can be messy, the second form shows the better way - using Bean Validation API --&gt;
+                         &lt;input jsf:id="name" type="text" jsf:value="\#{baseRegistrationBean.name}"
+                                jsf:requiredMessage="Name is required"
+                                jsf:required="true"&gt;
+                             &lt;f:ajax execute="@this" render="nameMessage progress"/&gt;
+                         &lt;/input&gt;
+                        &lt;p:column&gt;&lt;p:message id="nameMessage" for="name" /&gt;&lt;/p:column&gt;
+
+                        &lt;label jsf:for="tel"&gt;Telephone:&lt;/label&gt;
+                        &lt;input jsf:id="tel" type="text" jsf:value="\#{baseRegistrationBean.tel}"
+                               jsf:required="true"
+                               jsf:requiredMessage="Telephone is required"
+                               jsf:validatorMessage="Must be a number"&gt;
+                            &lt;f:ajax execute="@this" render="telMessage progress"/&gt;
+                            &lt;f:validateRegex pattern="[0-9]+"/&gt;
+                        &lt;/input&gt;
+                        &lt;p:message id="telMessage" for="tel" /&gt;
+
+                        &lt;label jsf:for="email"&gt;Email:&lt;/label&gt;
+                            &lt;input jsf:id="email" type="email" jsf:value="\#{baseRegistrationBean.email}"
                                    jsf:required="true"
                                    jsf:requiredMessage="Email is required"
-                                   jsf:validatorMessage="Invalid email format">
-                                <f:ajax execute="@this" render="emailMessage progress"/>
-                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                            </input>
-                        </td>
-                        <td><p:message id="emailMessage" for="email" /></td>
-                    </tr>
+                                   jsf:validatorMessage="Invalid email format"&gt;
+                                &lt;f:ajax execute="@this" render="emailMessage progress"/&gt;
+                                &lt;f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /&gt;
+                            &lt;/input&gt;
+                        &lt;p:message id="emailMessage" for="email" /&gt;
 
-                    <tr>
-                        <td></td>
-                        <td><progress jsf:id="progress" value="#{baseRegistrationBean.progress}" max="3"/></td>
-                    </tr>
+                        &lt;p:column/&gt;
+                        &lt;progress jsf:id="progress" value="\#{baseRegistrationBean.progress}" max="3"/&gt;
+                        &lt;p:column/&gt;
 
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input jsf:update="panel" jsf:actionListener="#{baseRegistrationBean.savePerson}" type="submit" value="Submit" />
-                            <input type="button" jsf:value="Back to index" jsf:ajax="true" jsf:outcome="index" />
-                        </td>
-                    </tr>
-                </table>
-            </p:panel>
+                        &lt;p:column/&gt;
+                        &lt;p:column&gt;
+                            &lt;input jsf:update="panel" jsf:actionListener="\#{baseRegistrationBean.savePerson}" type="submit" value="Submit" /&gt;
+                            &lt;input type="button" jsf:value="Back to index" jsf:ajax="true" jsf:outcome="index" /&gt;
+                        &lt;/p:column&gt;
+                        &lt;p:column/&gt;
+                    &lt;/p:panelGrid&gt;</textarea></div>
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-j" start="1"><li class="alt"><span><span class="keyword">package</span><span>&nbsp;javaone.con3638.htmlfriendlymarkup.base;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">import</span><span>&nbsp;java.io.Serializable;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">import</span><span>&nbsp;javax.enterprise.context.SessionScoped;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">import</span><span>&nbsp;javax.faces.application.FacesMessage;&nbsp;&nbsp;</span></span></li><li class=""><span><span class="keyword">import</span><span>&nbsp;javax.faces.context.FacesContext;&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">import</span><span>&nbsp;javax.inject.Named;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="annotation">@Named</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="annotation">@SessionScoped</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;BaseRegistrationBean&nbsp;</span><span class="keyword">implements</span><span>&nbsp;Serializable&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;name;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;tel;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;email;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getName()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;name;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setName(String&nbsp;name)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.name&nbsp;=&nbsp;name;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getTel()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;tel;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setTel(String&nbsp;tel)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.tel&nbsp;=&nbsp;tel;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getEmail()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;email;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setEmail(String&nbsp;email)&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.email&nbsp;=&nbsp;email;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getProgress()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;progress&nbsp;=&nbsp;</span><span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getName()&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>&nbsp;&amp;&amp;&nbsp;!getName().isEmpty())&nbsp;progress++;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getTel()&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>&nbsp;&amp;&amp;&nbsp;!getTel().isEmpty())&nbsp;progress++;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(getEmail()&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>&nbsp;&amp;&amp;&nbsp;!getEmail().isEmpty())&nbsp;progress++;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;String.valueOf(progress);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;savePerson()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FacesContext.getCurrentInstance().addMessage(<span class="string">"status"</span><span>,&nbsp;</span><span class="keyword">new</span><span>&nbsp;FacesMessage(getName()&nbsp;+&nbsp;</span><span class="string">"&nbsp;was&nbsp;registered!"</span><span>));&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;save&nbsp;to&nbsp;DB</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reset();&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;reset()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setName(<span class="keyword">null</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTel(<span class="keyword">null</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setEmail(<span class="keyword">null</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">package javaone.con3638.htmlfriendlymarkup.base;
+                        import java.io.Serializable;
+                        import javax.enterprise.context.SessionScoped;
+                        import javax.faces.application.FacesMessage;
+                        import javax.faces.context.FacesContext;
+                        import javax.inject.Named;
+
+                        @Named
+                        @SessionScoped
+                        public class BaseRegistrationBean implements Serializable {
+
+                            private String name;
+                            private String tel;
+                            private String email;
+
+                            public String getName() {
+                                return name;
+                            }
+
+                            public void setName(String name) {
+                                this.name = name;
+                            }
+
+                            public String getTel() {
+                                return tel;
+                            }
+
+                            public void setTel(String tel) {
+                                this.tel = tel;
+                            }
+
+                            public String getEmail() {
+                                return email;
+                            }
+
+                            public void setEmail(String email) {
+                                this.email = email;
+                            }
+
+                            public String getProgress() {
+                                int progress = 0;
+                                if (getName() != null &amp;&amp; !getName().isEmpty()) progress++;
+                                if (getTel() != null &amp;&amp; !getTel().isEmpty()) progress++;
+                                if (getEmail() != null &amp;&amp; !getEmail().isEmpty()) progress++;
+                                return String.valueOf(progress);
+                            }
+
+                            public void savePerson() {
+                                FacesContext.getCurrentInstance().addMessage("status", new FacesMessage(getName() + " was registered!"));
+                                // save to DB
+                                reset();
+                            }
+
+                            public void reset() {
+                                setName(null);
+                                setTel(null);
+                                setEmail(null);
+                            }
+
+                        }
+                        </textarea></div>
+                </p:tab>
+            </p:tabView>
         </form>
     </body>
 </html>

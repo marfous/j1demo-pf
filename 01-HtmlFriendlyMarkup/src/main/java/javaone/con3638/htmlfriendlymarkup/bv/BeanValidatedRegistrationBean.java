@@ -44,17 +44,12 @@ public class BeanValidatedRegistrationBean implements Serializable {
     private String tel;
 
     @Size(min = 1, message = "{EmailMandatory}")
+    // Custom simple Bean Validation rule
     @Email
     private String email;
 
     @Size(min = 1, message = "{AvatarMandatory}")
     private String avatar;
-
-    /**
-     * Creates a new instance of RegistrationBean
-     */
-    public BeanValidatedRegistrationBean() {
-    }
 
     public String getName() {
         return name;
