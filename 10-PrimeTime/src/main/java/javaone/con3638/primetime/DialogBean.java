@@ -32,7 +32,7 @@ public class DialogBean implements Serializable {
     }
     
     public void openTable() {
-        RequestContext.getCurrentInstance().openDialog("dataTableComplex", null, null);
+        RequestContext.getCurrentInstance().openDialog("dataTableComplex");
     }
     
     public void openTableWithOptions() {

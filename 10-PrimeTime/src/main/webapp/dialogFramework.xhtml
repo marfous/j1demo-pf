@@ -6,11 +6,51 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Dialog Framework</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton value="View Table" icon="ui-icon-extlink" actionListener="#{dialogBean.openTable}" />  
-            <p:commandButton value="View Table With Options" icon="ui-icon-extlink" actionListener="#{dialogBean.openTableWithOptions}" />  
+            <p:panel header="Dialog Framework">
+                <p:commandButton value="View Table" icon="ui-icon-extlink" actionListener="#{dialogBean.openTable}" />  
+                <p:commandButton value="View Table With Options" icon="ui-icon-extlink" actionListener="#{dialogBean.openTableWithOptions}" />  
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;p:commandButton&nbsp;value=</span><span class="string">"View&nbsp;Table"</span><span>&nbsp;icon=</span><span class="string">"ui-icon-extlink"</span><span>&nbsp;actionListener=</span><span class="string">"\#{dialogBean.openTable}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;p:commandButton&nbsp;value=<span class="string">"View&nbsp;Table&nbsp;With&nbsp;Options"</span><span>&nbsp;icon=</span><span class="string">"ui-icon-extlink"</span><span>&nbsp;actionListener=</span><span class="string">"\#{dialogBean.openTableWithOptions}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">                &lt;p:commandButton value="View Table" icon="ui-icon-extlink" actionListener="\#{dialogBean.openTable}" /&gt;  
+                                    &lt;p:commandButton value="View Table With Options" icon="ui-icon-extlink" actionListener="\#{dialogBean.openTableWithOptions}" /&gt;  
+                    </textarea></div>                    
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;openTable()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;RequestContext.getCurrentInstance().openDialog(<span class="string">"dataTableComplex"</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;openTableWithOptions()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;Map&lt;String,Object&gt;&nbsp;options&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;HashMap&lt;&gt;();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;options.put(<span class="string">"modal"</span><span>,&nbsp;</span><span class="keyword">true</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;options.put(<span class="string">"draggable"</span><span>,&nbsp;</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;options.put(<span class="string">"resizable"</span><span>,&nbsp;</span><span class="keyword">false</span><span>);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;options.put(<span class="string">"contentHeight"</span><span>,&nbsp;320);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;RequestContext.getCurrentInstance().openDialog(<span class="string">"dataTableComplex"</span><span>,&nbsp;options,&nbsp;null);&nbsp;&nbsp;</span></span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    public void openTable() {
+                        RequestContext.getCurrentInstance().openDialog("dataTableComplex");
+                    }
+
+                    public void openTableWithOptions() {
+                        Map&lt;String,Object&gt; options = new HashMap&lt;&gt;();
+                        options.put("modal", true);
+                        options.put("draggable", false);
+                        options.put("resizable", false);
+                        options.put("contentHeight", 320);
+
+                        RequestContext.getCurrentInstance().openDialog("dataTableComplex", options, null);
+                    }</textarea></div>                    
+                </p:tab>
+                <p:tab title="faces-config.xml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;application&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;action-listener&gt;org.primefaces.application.DialogActionListener&lt;/action-listener&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;navigation-handler&gt;org.primefaces.application.DialogNavigationHandler&lt;/navigation-handler&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;view-handler&gt;org.primefaces.application.DialogViewHandler&lt;/view-handler&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/application&gt;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">    &lt;application&gt;
+                            &lt;action-listener&gt;org.primefaces.application.DialogActionListener&lt;/action-listener&gt;
+                            &lt;navigation-handler&gt;org.primefaces.application.DialogNavigationHandler&lt;/navigation-handler&gt;
+                            &lt;view-handler&gt;org.primefaces.application.DialogViewHandler&lt;/view-handler&gt;
+                        &lt;/application&gt;
+                    </textarea></div>                    
+                </p:tab>
+            </p:tabView>            
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
         </h:form>
     </h:body>
 </html>

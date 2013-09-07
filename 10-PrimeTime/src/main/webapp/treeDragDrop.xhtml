@@ -6,30 +6,71 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Drag Drop on Tree Nodes</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form id="form">
             <p:growl id="messages" showDetail="true" />  
   
-            <h:panelGrid columns="3">  
-                <p:tree id="tree1" value="#{treeBean.root1}" var="node"
-                        draggable="true" droppable="true" dragdropScope="demo">  
-                    <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:messages" />  
-                    <p:treeNode>  
-                        <h:outputText value="#{node}" />  
-                    </p:treeNode>  
-                </p:tree>  
+            <p:panel header="Drag and Drop Tree Nodes">
+                <h:panelGrid columns="3">  
+                    <p:tree id="tree1" value="#{treeBean.root1}" var="node"
+                            draggable="true" droppable="true" dragdropScope="demo">  
+                        <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:messages" />  
+                        <p:treeNode>  
+                            <h:outputText value="#{node}" />  
+                        </p:treeNode>  
+                    </p:tree>  
 
-                <p:graphicImage alt="Transfer" url="/images/transfer.png" />  
+                    <p:graphicImage alt="Transfer" url="/images/transfer.png" />  
 
-                <p:tree id="tree2" value="#{treeBean.root2}" var="node"
-                        draggable="true" droppable="true" dragdropScope="demo">  
-                    <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:messages" />  
-                    <p:treeNode>  
-                        <h:outputText value="#{node}" />  
-                    </p:treeNode>  
-                </p:tree>  
-            </h:panelGrid> 
+                    <p:tree id="tree2" value="#{treeBean.root2}" var="node"
+                            draggable="true" droppable="true" dragdropScope="demo">  
+                        <p:ajax event="dragdrop" listener="#{treeBean.onDragDrop}" update=":form:messages" />  
+                        <p:treeNode>  
+                            <h:outputText value="#{node}" />  
+                        </p:treeNode>  
+                    </p:tree>  
+                </h:panelGrid> 
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;p:tree&nbsp;id=</span><span class="string">"tree1"</span><span>&nbsp;value=</span><span class="string">"\#{treeBean.root1}"</span><span>&nbsp;var=</span><span class="string">"node"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draggable=<span class="string">"true"</span><span>&nbsp;droppable=</span><span class="string">"true"</span><span>&nbsp;dragdropScope=</span><span class="string">"demo"</span><span>&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:ajax&nbsp;event=<span class="string">"dragdrop"</span><span>&nbsp;listener=</span><span class="string">"\#{treeBean.onDragDrop}"</span><span>&nbsp;update=</span><span class="string">":form:messages"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:treeNode&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:outputText&nbsp;value=<span class="string">"\#{node}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p:treeNode&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/p:tree&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>tree2<span class="string">"&nbsp;value="</span><span>\#{treeBean.root2}</span><span class="string">"&nbsp;var="</span><span>node"&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draggable=<span class="string">"true"</span><span>&nbsp;droppable=</span><span class="string">"true"</span><span>&nbsp;dragdropScope=</span><span class="string">"demo"</span><span>&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:ajax&nbsp;event=<span class="string">"dragdrop"</span><span>&nbsp;listener=</span><span class="string">"\#{treeBean.onDragDrop}"</span><span>&nbsp;update=</span><span class="string">":form:messages"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:treeNode&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:outputText&nbsp;value=<span class="string">"\#{node}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p:treeNode&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&lt;/p:tree&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">                    &lt;p:tree id="tree1" value="\#{treeBean.root1}" var="node"
+                                    draggable="true" droppable="true" dragdropScope="demo"&gt;  
+                            &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:messages" /&gt;  
+                            &lt;p:treeNode&gt;  
+                                    &lt;h:outputText value="\#{node}" /&gt;  
+                            &lt;/p:treeNode&gt;  
+                    &lt;/p:tree&gt;  
+
+
+                    &lt;p:tree id="tree2" value="\#{treeBean.root2}" var="node"
+                                    draggable="true" droppable="true" dragdropScope="demo"&gt;  
+                            &lt;p:ajax event="dragdrop" listener="\#{treeBean.onDragDrop}" update=":form:messages" /&gt;  
+                            &lt;p:treeNode&gt;  
+                                    &lt;h:outputText value="\#{node}" /&gt;  
+                            &lt;/p:treeNode&gt;  
+                    &lt;/p:tree&gt;  
+                    </textarea></div>                    
+                </p:tab>
+                <p:tab title="Code">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;onDragDrop(TreeDragDropEvent&nbsp;event)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;TreeNode&nbsp;dragNode&nbsp;=&nbsp;event.getDragNode();&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;TreeNode&nbsp;dropNode&nbsp;=&nbsp;event.getDropNode();&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="datatypes">int</span><span>&nbsp;dropIndex&nbsp;=&nbsp;event.getDropIndex();&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;FacesMessage&nbsp;message&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;FacesMessage(FacesMessage.SEVERITY_INFO,&nbsp;</span><span class="string">"Dragged&nbsp;"</span><span>&nbsp;+&nbsp;dragNode.getData(),&nbsp;</span><span class="string">"Dropped&nbsp;on&nbsp;"</span><span>&nbsp;+&nbsp;dropNode.getData());&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;FacesContext.getCurrentInstance().addMessage(null,&nbsp;message);&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">    public void onDragDrop(TreeDragDropEvent event) {  
+                            TreeNode dragNode = event.getDragNode();  
+                            TreeNode dropNode = event.getDropNode();  
+                            int dropIndex = event.getDropIndex();  
+
+                            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Dragged " + dragNode.getData(), "Dropped on " + dropNode.getData());  
+                            FacesContext.getCurrentInstance().addMessage(null, message);  
+                        }  
+                    </textarea></div>                    
+                </p:tab>
+            </p:tabView>            
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
         </h:form>
     </h:body>
 </html>

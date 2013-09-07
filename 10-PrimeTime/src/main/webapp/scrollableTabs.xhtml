@@ -6,25 +6,41 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Complex Data Table</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form id="form">
-
-            <p:tabView scrollable="true" value="#{tabBean.tabs}" var="tab">
-                <p:tab title="#{tab}">
-                    <h3>#{tab}</h3>
+            <p:panel header="Scrollable Tabs" style="width:80%">
+                Tab View with Top orientation (default):
+                <p:tabView scrollable="true" value="#{tabBean.tabs}" var="tab">
+                    <p:tab title="#{tab}">
+                        <h3>#{tab}</h3>
+                    </p:tab>
+                </p:tabView>
+                <br/>
+                <br/>
+                Tab View with Bottom orientation:
+                <p:tabView scrollable="true" orientation="bottom" value="#{tabBean.tabs}" var="tab">
+                    <p:tab title="#{tab}">
+                        <h3>#{tab}</h3>
+                    </p:tab>
+                </p:tabView>
+            </p:panel>
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="xhtml">
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;p:tabView&nbsp;scrollable=</span><span class="string">"true"</span><span>&nbsp;value=</span><span class="string">"\#{tabBean.tabs}"</span><span>&nbsp;var=</span><span class="string">"tab"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:tab&nbsp;title=<span class="string">"\#{tab}"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;\#{tab}&lt;/h3&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p:tab&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/p:tabView&gt;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">                &lt;p:tabView scrollable="true" value="\#{tabBean.tabs}" var="tab"&gt;
+                        &lt;p:tab title="\#{tab}"&gt;
+                            &lt;h3&gt;\#{tab}&lt;/h3&gt;
+                        &lt;/p:tab&gt;
+                    &lt;/p:tabView&gt;</textarea></div>                    
                 </p:tab>
-            </p:tabView>
+            </p:tabView>            
             <br/>
             <br/>
-            Tab View with bottom orientation:
-            <br/>
-            <p:tabView scrollable="true" orientation="bottom" value="#{tabBean.tabs}" var="tab">
-                <p:tab title="#{tab}">
-                    <h3>#{tab}</h3>
-                </p:tab>
-            </p:tabView>
-
+            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
         </h:form>
     </h:body>
 </html>
