@@ -1,7 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />
+    </h:head>
     <body>
         <!-- Here is called template which doens't exist in the document root. Instead of that
             it's defined by the simple RLC - within the <docroot>/contracts/simple subdir. The
@@ -14,8 +20,55 @@
 
             <ui:define name="content">
                 Content of your page.
+                <br/>
+                <h:link outcome="/index.xhtml" value="Back to index"/>
             </ui:define>
 
         </ui:composition>
+
+        <br/>
+        <br/>
+        <p:tabView>
+            <p:tab title="xhtml">
+                <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-xml" start="1"><li class="alt"><span><span>&lt;!--&nbsp;Here&nbsp;is&nbsp;called&nbsp;template&nbsp;which&nbsp;doens't&nbsp;exist&nbsp;in&nbsp;the&nbsp;document&nbsp;root.&nbsp;Instead&nbsp;of&nbsp;that&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;it's&nbsp;defined&nbsp;by&nbsp;the&nbsp;simple&nbsp;RLC&nbsp;-&nbsp;within&nbsp;the&nbsp;<span class="tag">&lt;</span><span class="tag-name">docroot</span><span class="tag">&gt;</span><span>/contracts/simple&nbsp;subdir.&nbsp;The&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;simple&nbsp;contract&nbsp;is&nbsp;used&nbsp;because&nbsp;it's&nbsp;only&nbsp;contract&nbsp;with&nbsp;template&nbsp;of&nbsp;such&nbsp;name.&nbsp;--<span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="tag">&lt;</span><span class="tag-name">ui:composition</span><span>&nbsp;</span><span class="attribute">template</span><span>=</span><span class="attribute-value">"/simpleTemplate.xhtml"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">ui:define</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"top"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple&nbsp;RLC&nbsp;usage&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">ui:define</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">ui:define</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"content"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content&nbsp;of&nbsp;your&nbsp;page.&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h:link</span><span>&nbsp;</span><span class="attribute">outcome</span><span>=</span><span class="attribute-value">"/index.xhtml"</span><span>&nbsp;</span><span class="attribute">value</span><span>=</span><span class="attribute-value">"Back&nbsp;to&nbsp;index"</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">ui:define</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span><span class="tag">&lt;/</span><span class="tag-name">ui:composition</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">&lt;!-- Here is called template which doens't exist in the document root. Instead of that
+                    it's defined by the simple RLC - within the &lt;docroot&gt;/contracts/simple subdir. The
+                    simple contract is used because it's only contract with template of such name. --&gt;
+                &lt;ui:composition template="/simpleTemplate.xhtml"&gt;
+
+                    &lt;ui:define name="top"&gt;
+                        Simple RLC usage
+                    &lt;/ui:define&gt;
+
+                    &lt;ui:define name="content"&gt;
+                        Content of your page.
+                        &lt;br/&gt;
+                        &lt;h:link outcome="/index.xhtml" value="Back to index"/&gt;
+                    &lt;/ui:define&gt;
+
+                &lt;/ui:composition&gt;</textarea></div>
+            </p:tab>
+            <p:tab title="contracts/simple/simpleTemplate.xhtml">
+                <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol class="dp-xml" start="1"><li class="alt"><span><span class="tag">&lt;?</span><span class="tag-name">xml</span><span>&nbsp;</span><span class="attribute">version</span><span>=</span><span class="attribute-value">'1.0'</span><span>&nbsp;</span><span class="attribute">encoding</span><span>=</span><span class="attribute-value">'UTF-8'</span><span>&nbsp;</span><span class="tag">?&gt;</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;!DOCTYPE&nbsp;html&nbsp;PUBLIC&nbsp;"-//W3C//DTD&nbsp;XHTML&nbsp;1.0&nbsp;Transitional//EN"&nbsp;"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"<span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">html</span><span>&nbsp;</span><span class="attribute">xmlns</span><span>=</span><span class="attribute-value">"http://www.w3.org/1999/xhtml"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">xmlns:ui</span><span>=</span><span class="attribute-value">"http://xmlns.jcp.org/jsf/facelets"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attribute">xmlns:h</span><span>=</span><span class="attribute-value">"http://xmlns.jcp.org/jsf/html"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h:head</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">meta</span><span>&nbsp;</span><span class="attribute">http-equiv</span><span>=</span><span class="attribute-value">"Content-Type"</span><span>&nbsp;</span><span class="attribute">content</span><span>=</span><span class="attribute-value">"text/html;&nbsp;charset=UTF-8"</span><span>&nbsp;</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h:outputStylesheet</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">'css/default.css'</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h:outputStylesheet</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">'css/cssLayout.css'</span><span class="tag">/&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">title</span><span class="tag">&gt;</span><span>Simple&nbsp;RLC&nbsp;usage</span><span class="tag">&lt;/</span><span class="tag-name">title</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">h:head</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h:body</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"top"</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"top"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">h1</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">ui:insert</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"top"</span><span class="tag">&gt;</span><span>Top</span><span class="tag">&lt;/</span><span class="tag-name">ui:insert</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">h1</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"content"</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"center_content"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">ui:insert</span><span>&nbsp;</span><span class="attribute">name</span><span>=</span><span class="attribute-value">"content"</span><span class="tag">&gt;</span><span>Content</span><span class="tag">&lt;/</span><span class="tag-name">ui:insert</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">h:body</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="tag">&lt;/</span><span class="tag-name">html</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">&lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                    &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                    &lt;html xmlns="http://www.w3.org/1999/xhtml"
+                          xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                          xmlns:h="http://xmlns.jcp.org/jsf/html"&gt;
+                        &lt;h:head&gt;
+                            &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+                            &lt;h:outputStylesheet name='css/default.css'/&gt;
+                            &lt;h:outputStylesheet name='css/cssLayout.css'/&gt;
+                            &lt;title&gt;Simple RLC usage&lt;/title&gt;
+                        &lt;/h:head&gt;
+                        &lt;h:body&gt;
+                            &lt;div id="top" class="top"&gt;
+                                &lt;h1&gt;&lt;ui:insert name="top"&gt;Top&lt;/ui:insert&gt;&lt;/h1&gt;
+                            &lt;/div&gt;
+                            &lt;div id="content" class="center_content"&gt;
+                                &lt;ui:insert name="content"&gt;Content&lt;/ui:insert&gt;
+                            &lt;/div&gt;
+                        &lt;/h:body&gt;
+                    &lt;/html&gt;</textarea></div>
+            </p:tab>
+        </p:tabView>
     </body>
 </html>
