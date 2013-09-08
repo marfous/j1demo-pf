@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Theming Concept</title>
+        <h:outputScript library="js" name="shCoreStaticInclude.js" />        
+        <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:themeSwitcher style="width:165px" id="defaultSwitcher">  
+                <f:selectItems value="#{themeSwitcherBean.themes}" />  
+            </p:themeSwitcher>  
+            
+            <h:panelGrid columns="2">
+                <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
+                             selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">
+
+                    <f:facet name="header">
+                        List of Cars
+                    </f:facet>
+
+                    <p:column headerText="Model" sortBy="model" filterBy="model" id="modelColumn">
+                        #{car.model}
+                    </p:column>
+
+                    <p:column headerText="Year" sortBy="year" filterBy="year" id="yearColumn">
+                        #{car.year}
+                    </p:column>
+
+                    <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturerColumn">
+                        #{car.manufacturer}
+                    </p:column>
+
+                    <p:column headerText="Color" sortBy="color" filterBy="color" id="colorColumn">
+                        #{car.color}
+                    </p:column>
+                </p:dataTable>
+                
+                <p:calendar value="#{bla}" mode="inline" id="inlineCal" />    
+            </h:panelGrid> 
+            <br/>
+            <br/>
+            <p:tabView>
+                <p:tab title="pom.xml">                 
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;all-themes&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.10&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;cupertino&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.10&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&lt;repositories&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;http:<span class="comment">//repository.primefaces.org/&lt;/url&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;PrimeFaces-maven-lib&lt;/id&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;layout&gt;<span class="keyword">default</span><span>&lt;/layout&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Repository&nbsp;<span class="keyword">for</span><span>&nbsp;library&nbsp;PrimeFaces-maven-lib&lt;/name&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&lt;/repositories&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    	&lt;dependency&gt;  
+                                &lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;  
+                                &lt;artifactId&gt;all-themes&lt;/artifactId&gt;  
+                                &lt;version&gt;1.0.10&lt;/version&gt;  
+                        &lt;/dependency&gt;  
+
+                        &lt;dependency&gt;  
+                                &lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;  
+                                &lt;artifactId&gt;cupertino&lt;/artifactId&gt;  
+                                &lt;version&gt;1.0.10&lt;/version&gt;  
+                        &lt;/dependency&gt;        
+
+                    &lt;repositories&gt;
+                        &lt;repository&gt;
+                            &lt;url&gt;http://repository.primefaces.org/&lt;/url&gt;
+                            &lt;id&gt;PrimeFaces-maven-lib&lt;/id&gt;
+                            &lt;layout&gt;default&lt;/layout&gt;
+                            &lt;name&gt;Repository for library PrimeFaces-maven-lib&lt;/name&gt;
+                        &lt;/repository&gt;
+                    &lt;/repositories&gt;
+        </textarea></div>                    
+                </p:tab>
+                <p:tab title="web.xml">                
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;context-param&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-name&gt;primefaces.THEME&lt;/param-name&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-value&gt;bootstrap&lt;/param-value&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&lt;/context-param&gt;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;context-param&gt;
+                       &lt;param-name&gt;primefaces.THEME&lt;/param-name&gt;
+                       &lt;param-value&gt;bootstrap&lt;/param-value&gt;
+                    &lt;/context-param&gt;</textarea></div>                    
+                </p:tab>
+            </p:tabView>            
+            <br/>
+            <br/>
+            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
+        </h:form>
+    </h:body>
+</html>
+
