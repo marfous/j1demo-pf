@@ -26,7 +26,11 @@
             <artifactId>primefaces</artifactId>
             <version>4.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>javaone.con3638.syntaxhighlighter</groupId>
+            <artifactId>SyntaxHighlighter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
