@@ -26,7 +26,6 @@ import javax.annotation.PostConstruct;
 
 @Named(value = "themeSwitcherBean")
 @SessionScoped
-
 public class ThemeSwitcherBean implements Serializable {
         
     private Map<String, String> themes;

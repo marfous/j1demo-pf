@@ -5,46 +5,151 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Theming Concept</title>
+        <title>Theming Concepts</title>
         <h:outputScript library="js" name="shCoreStaticInclude.js" />        
         <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
         <h:form>
-            <p:themeSwitcher style="width:165px" id="defaultSwitcher">  
-                <f:selectItems value="#{themeSwitcherBean.themes}" />  
-            </p:themeSwitcher>  
-            
-            <h:panelGrid columns="2">
-                <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
-                             selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">
+            <p:panel header="Component Mashup">
+                <p:growl id="msg" />
 
-                    <f:facet name="header">
-                        List of Cars
-                    </f:facet>
+                <p:themeSwitcher id="defaultSwitcher">  
+                    <f:selectItems value="#{themeSwitcherBean.themes}" />  
+                </p:themeSwitcher>  
+                <p:toolbar>  
+                  <p:toolbarGroup align="left">  
+                      <p:commandButton type="button" value="New" icon="ui-icon-document" />  
 
-                    <p:column headerText="Model" sortBy="model" filterBy="model" id="modelColumn">
-                        #{car.model}
-                    </p:column>
+                      <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>  
 
-                    <p:column headerText="Year" sortBy="year" filterBy="year" id="yearColumn">
-                        #{car.year}
-                    </p:column>
+                      <p:separator />  
 
-                    <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturerColumn">
-                        #{car.manufacturer}
-                    </p:column>
+                      <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>  
+                      <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>  
+                      <p:commandButton type="button" title="Print" icon="ui-icon-print"/>  
+                  </p:toolbarGroup>  
 
-                    <p:column headerText="Color" sortBy="color" filterBy="color" id="colorColumn">
-                        #{car.color}
-                    </p:column>
-                </p:dataTable>
-                
-                <p:calendar value="#{bla}" mode="inline" id="inlineCal" />    
-            </h:panelGrid> 
+                  <p:toolbarGroup align="right">  
+                      <p:menuButton value="Options">  
+                          <p:menuitem value="Home" url="http://www.primefaces.org" />  
+                          <p:menuitem value="ShowCase"  
+                                      url="http://www.primefaces.org/showcase" />  
+                          <p:menuitem value="TouchFaces"  
+                                      url="http://www.primefaces.org/showcase/touch" />  
+                      </p:menuButton>  
+                  </p:toolbarGroup>  
+
+                </p:toolbar>              
+                <p:spacer/> 
+                <h:panelGrid columns="3">
+                    <p:dataTable var="car" value="#{tableBean.cars}" rowKey="#{car.model}" paginator="true" rows="10"
+                                selection="#{tableBean.selectedCar}" selectionMode="single" filteredValue="#{tableBean.filteredCars}" id="carsTable">
+
+                        <f:facet name="header">
+                            List of Cars
+                        </f:facet>
+
+                        <p:column headerText="Model" sortBy="model" filterBy="model" id="modelColumn">
+                            #{car.model}
+                        </p:column>
+
+                        <p:column headerText="Year" sortBy="year" filterBy="year" id="yearColumn">
+                            #{car.year}
+                        </p:column>
+
+                        <p:column headerText="Manufacturer" sortBy="manufacturer" filterBy="manufacturer" id="manufacturerColumn">
+                            #{car.manufacturer}
+                        </p:column>
+
+                        <p:column headerText="Color" sortBy="color" filterBy="color" id="colorColumn">
+                            #{car.color}
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:accordionPanel>  
+                        <p:tab title="Godfather Part I">  
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+                                <h:outputText  
+                                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.   
+                                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
+                                    hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,   
+                                    but given to ruthless violence whenever anything stands against the good of the family." />  
+                            </h:panelGrid>  
+                        </p:tab>  
+                        <p:tab title="Godfather Part II">  
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/images/godfather/godfather2.jpg" />  
+                                <h:outputText value="Francis Ford Coppola's legendary continuation and sequel to his landmark 1972 film, The_Godfather, parallels the young Vito Corleone's rise with his son Michael's spiritual fall, deepening The_Godfather's depiction of the dark side of the American dream.   
+                                In the early 1900s, the child Vito flees his Sicilian village for America after the local Mafia kills his family. Vito struggles to make a living, legally or illegally, for his wife and growing brood in Little Italy,   
+                                killing the local Black Hand Fanucci after he demands his customary cut of the tyro's business. With Fanucci gone, Vito's communal stature grows." />  
+                            </h:panelGrid>  
+                        </p:tab>  
+                        <p:tab title="Godfather Part III">  
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/images/godfather/godfather3.jpg" />  
+                                <h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family.   
+                                    Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />  
+                            </h:panelGrid>  
+                        </p:tab>  
+                    </p:accordionPanel>  
+
+                    <h:panelGrid columns="1">
+                        <p:calendar value="#{bla}" mode="inline" id="inlineCal" />    
+                        <p:spacer/>
+                        <p:inputText id="txt1" value="#{bla}" />  
+                        <p:slider for="txt1" />                  
+                        <p:spacer/>
+                        <p:spinner id="spinnerBasic" value="#{bla}"/>                      
+                        <p:spacer/>
+                        <p:selectManyCheckbox value="#{bla}">  
+                            <f:selectItem itemLabel="Option 1" itemValue="Option 1" />  
+                            <f:selectItem itemLabel="Option 2" itemValue="Option 2" />  
+                            <f:selectItem itemLabel="Option 3" itemValue="Option 3" />  
+                        </p:selectManyCheckbox>  
+                    </h:panelGrid>
+
+                </h:panelGrid> 
+
+                <h:panelGrid columns="2">
+                    <p:tree id="tree" value="#{treeBean.root}" var="node" orientation="horizontal">  
+                        <p:treeNode id="treeNode">  
+                            <h:outputText value="#{node}" id="lblNode"/>  
+                        </p:treeNode>  
+                    </p:tree>  
+
+                    <p:pickList id="pojoPickList" value="#{pickListBean.players}" var="player" effect="bounce"  
+                                    itemValue="#{player}" itemLabel="#{player.name}" converter="player"  
+                                    showSourceControls="true" showTargetControls="true" showCheckbox="true"  
+                                    showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains" >  
+
+                        <f:facet name="sourceCaption">Available</f:facet>  
+                        <f:facet name="targetCaption">Starting</f:facet>  
+
+                        <p:ajax event="transfer" listener="#{pickListBean.onTransfer}" update="msg" />  
+
+                        <p:column style="width:25%">  
+                            <p:graphicImage value="/images/barca/#{player.photo}" width="30" height="40" />  
+                        </p:column>  
+
+                            <p:column style="width:75%;">  
+                            #{player.name}  
+                        </p:column>  
+
+                    </p:pickList> 
+                </h:panelGrid>
+            </p:panel>
             <br/>
             <br/>
             <p:tabView>
+                <p:tab title="xhtml">                 
+                    <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;p:themeSwitcher&nbsp;id=</span><span class="string">"defaultSwitcher"</span><span>&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;f:selectItems&nbsp;value=<span class="string">"\#{themeSwitcherBean.themes}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&lt;/p:themeSwitcher&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
+                    &lt;p:themeSwitcher id="defaultSwitcher"&gt;  
+                         &lt;f:selectItems value="\#{themeSwitcherBean.themes}" /&gt;
+                    &lt;/p:themeSwitcher&gt;  
+                    </textarea></div>
+                </p:tab>
                 <p:tab title="pom.xml">                 
                     <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;all-themes&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.10&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;cupertino&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.10&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&lt;repositories&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;repository&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;http:<span class="comment">//repository.primefaces.org/&lt;/url&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;PrimeFaces-maven-lib&lt;/id&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;layout&gt;<span class="keyword">default</span><span>&lt;/layout&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;Repository&nbsp;<span class="keyword">for</span><span>&nbsp;library&nbsp;PrimeFaces-maven-lib&lt;/name&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/repository&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&lt;/repositories&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">
                     	&lt;dependency&gt;  
