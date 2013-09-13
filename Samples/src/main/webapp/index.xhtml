@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>10 Tips for Java EE 7 with PrimeFaces Samples</title>
+        <h:outputStylesheet name="styles.css" library="css"/>
+    </h:head>
+    <h:body>
+        <div class="content">
+            #{hostname = "localhost:8080";""}
+            <h1>10 Tips for Java EE 7 with PrimeFaces</h1>
+
+            <h:outputLabel value="Notes:"/><br/>
+            <h:outputText styleClass="note" value="- All samples must be deployed on the server."/><br/>
+            <h:outputText styleClass="note" value="- You can change your hostname within the Samples/src/main/webapp/index.xhtml."/><br/><br/>
+
+            <p:panel id="panel" header="Samples">
+                <p:panelGrid>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/01-HtmlFriendlyMarkup">01-HtmlFriendlyMarkup</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Form with usage of HTML friendly markup: validation by Bean Validation API
+                                          with localized messages, custom Bean Validation annotation, passthrough
+                                          attributes and elements, usage of jQuery plugin at JSF component."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/02-ResourceLibrariesContracts">02-ResourceLibrariesContracts</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Simple Resource Libraries Contracts usage, switching RLCs dynamically
+                                          using Expression Language and ManagedBean."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/03-ExpressionLanguage3">03-ExpressionLanguage3</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Examples of Expression Language 3.0 features: standalone EL Processor,
+                                          operators, static fields, collections, lambdas and collection operations."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/10-PrimeTime">10-PrimeTime</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Examples on advanced UI components: DataTable, Gmap, AutoComplete, Client
+                                          Side Validation, Tree Drag and Drop, The Dialog Framework and others."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/04-PrimeFacesThemes">04-PrimeFacesThemes</h:outputLink><br/>
+                            <h:outputLink target="_blank" value="http://#{hostname}/04-PrimeTheme">04-PrimeTheme</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Theme variations on UI Components. Configuration of theme infrastructure."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/05-PrimeGoBeyond">05-PrimeGoBeyond</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="PrimePush Checkin Demo w/ PrimeMobile in Action PrimeUI integrated with
+                                          REST Services"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/06-JsfScaffolding">06-JsfScaffolding</h:outputLink><br/>
+                            <h:outputLink target="_blank" value="http://#{hostname}/06-PrimeFacesScaffolding">06-PrimeFacesScaffolding</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="CRUD applications generated using standard JavaServer Faces templates and
+                                          PrimeFaces templates (using nbpfcrudgen plugin)."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/07-FacesFlow">07-FacesFlow</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Sample wizard using navigation elements of the Faces Flow, flow scope
+                                          defined bean, Faces Flow component as a plugable library."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/08-FacesComponent">08-FacesComponent</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="Usage of the tag defined by @FacesComponent without any tag library, CDI
+                                          binding in the component, Java SE project as a custom tag library."/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column styleClass="app">
+                            <h:outputLink target="_blank" value="http://#{hostname}/09-FileUpload">09-FileUpload</h:outputLink>
+                        </p:column>
+                        <p:column styleClass="desc">
+                            <h:outputText value="File Upload of the standard JSF 2.2 and PrimeFaces library in action,
+                                          with validation of type and size limit."/>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+            </p:panel>
+        </div>
+    </h:body>
+</html>
+

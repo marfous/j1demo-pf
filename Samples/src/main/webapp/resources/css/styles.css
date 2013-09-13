@@ -1,0 +1,24 @@
+
+.content {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.note {
+    color: #666;
+}
+
+.app {
+    background-color: #EEE;
+    vertical-align: top;
+    width: 200px;
+    font-weight: bold;
+}
+    .app a {
+        text-decoration: none;
+    }
+
+.desc {
+    vertical-align: top;
+    width: 760px;
+}
