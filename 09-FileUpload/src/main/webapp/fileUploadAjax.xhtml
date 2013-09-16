@@ -10,16 +10,18 @@
         <h:outputStylesheet library="css" name="SyntaxHighlighterModified.css" />        
     </h:head>
     <h:body>
-        <h:form id="form" enctype="multipart/form-data">
-            <p:panel header="File Upload with Ajax">
-                <h:panelGrid columns="1">
-                    <h:inputFile id="file" value="#{ajaxFileUploadBean.file}" />
-                    <h:commandButton value="Upload" action="#{ajaxFileUploadBean.upload}">
-                        <f:ajax execute="file" render="file fileName" />
-                    </h:commandButton>
-                    <h:outputText id="fileName" value="Uploaded File Name: #{ajaxFileUploadBean.file.submittedFileName}" />
-                </h:panelGrid>
-            </p:panel>
+            <h:form id="form" enctype="multipart/form-data">
+                <p:panel header="File Upload with Ajax">
+                    <h:panelGrid columns="1">
+                        <h:inputFile id="file" value="#{ajaxFileUploadBean.file}" />
+                        <h:commandButton value="Upload" action="#{ajaxFileUploadBean.upload}">
+                            <f:ajax execute="file" render="file fileName" />
+                        </h:commandButton>
+                        <h:outputText id="fileName" value="Uploaded File Name: #{ajaxFileUploadBean.file.submittedFileName}" />
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+            
             <br/>
             <br/>
             <p:tabView>
@@ -34,7 +36,7 @@
                           &lt;f:ajax execute="file" render="file fileName" /&gt;
                     &lt;/h:commandButton&gt;
                     &lt;h:outputText id="fileName" value="\#{ajaxFileUploadBean.file.submittedFileName}" /&gt;
-</textarea></div>
+                    </textarea></div>
                 </p:tab>
                 <p:tab title="Code">
                     <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource', this);
@@ -72,8 +74,9 @@
             </p:tabView>
             <br/>
             <br/>
-            <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
-        </h:form>
+            <h:form>
+                <p:commandButton action="index" value="Back" ajax="false" immediate="true" />
+            </h:form>
     </h:body>
 </html>
 
