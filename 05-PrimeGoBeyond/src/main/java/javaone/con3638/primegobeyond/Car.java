@@ -16,76 +16,57 @@
  */
 package javaone.con3638.primegobeyond;
 
-import java.io.Serializable;
-import javax.validation.constraints.NotNull;
 
-public class Car implements Serializable {
-
-    private String model;
+public class Car {
+    
+    private String vin;
+    private String brand;
     private int year;
-    private String manufacturer;
-    
-    @NotNull
     private String color;
-    
-    private int price;
 
     public Car() {
     }
     
-    public Car(String model, int year, String manufacturer, String color) {
-        this.model = model;
+    public Car(String vin, String brand, int year, String color) {
+        this.vin = vin;
+        this.brand = brand;
         this.year = year;
-        this.manufacturer = manufacturer;
         this.color = color;
     }
 
-    public Car(String model, int year, String manufacturer, String color, int price) {
-        this.model = model;
-        this.year = year;
-        this.manufacturer = manufacturer;
-        this.color = color;
-        this.price = price;
+    public String getVin() {
+        return vin;
+    }
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
-    public String getModel() {
-        return model;
+    public String getBrand() {
+        return brand;
     }
-
-    public void setModel(String model) {
-        this.model = model;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public int getYear() {
         return year;
     }
-
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
     }
 
     public String getColor() {
         return color;
     }
-
     public void setColor(String color) {
         this.color = color;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + (this.vin != null ? this.vin.hashCode() : 0);
+        return hash;
     }
 
     @Override
@@ -93,20 +74,13 @@ public class Car implements Serializable {
         if (obj == null) {
             return false;
         }
-
-        if (!(obj instanceof Car)) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-
-        Car compare = (Car) obj;
-
-        return compare.model.equals(this.model);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 1;
-
-        return hash * 31 + model.hashCode();
+        final Car other = (Car) obj;
+        if ((this.vin == null) ? (other.vin != null) : !this.vin.equals(other.vin)) {
+            return false;
+        }
+        return true;
     }
 }

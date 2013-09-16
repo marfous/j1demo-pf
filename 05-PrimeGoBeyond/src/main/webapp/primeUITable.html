@@ -3,10 +3,16 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="primeui/jquery-1.10.2.min.js" />
-        <script type="text/javascript" src="primeui/primeui-0.9.6-min.js" />
-        <link type="text/css" rel="stylesheet" href="primeui/primeui-0.9.6-min.css" />
-        
+        <script type="text/javascript" src="primeui/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="primeui/primeui-0.9.6-min.js"></script>
+        <script type="text/javascript" src="primeui/jquery-ui.js"></script> 
+        <link type="text/css" rel="stylesheet" href="primeui/jquery-ui.css"/>
+        <link type="text/css" rel="stylesheet" href="primeui/primeui-0.9.6-min.css"/>
+        <link type="text/css" rel="stylesheet" href="primeui/aristo/theme.css"/>
+
+        <script type="text/javascript" src="highlighter/shCoreStaticInclude.js"></script> 
+        <link type="text/css" rel="stylesheet" href="highlighter/SyntaxHighlighterModified.css"/>
+
         <script type="text/javascript">  
             $(function() {  
                 $('#tblremote').puidatatable({  
@@ -45,5 +51,54 @@
         </script>          
     </head>
     <body>
+        <div id="messages"></div>  
+        <div id="tblremote"></div>
+        <br/>
+        <br/>
+        <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;script&nbsp;type=</span><span class="string">"text/javascript"</span><span>&nbsp;src=</span><span class="string">"primeui/jquery-1.10.2.min.js"</span><span>&gt;&lt;/script&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;script&nbsp;type=<span class="string">"text/javascript"</span><span>&nbsp;src=</span><span class="string">"primeui/primeui-0.9.6-min.js"</span><span>&gt;&lt;/script&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&lt;script&nbsp;type=<span class="string">"text/javascript"</span><span>&nbsp;src=</span><span class="string">"primeui/jquery-ui.js"</span><span>&gt;&lt;/script&gt;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&lt;link&nbsp;type=<span class="string">"text/css"</span><span>&nbsp;rel=</span><span class="string">"stylesheet"</span><span>&nbsp;href=</span><span class="string">"primeui/jquery-ui.css"</span><span>/&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&lt;link&nbsp;type=<span class="string">"text/css"</span><span>&nbsp;rel=</span><span class="string">"stylesheet"</span><span>&nbsp;href=</span><span class="string">"primeui/primeui-0.9.6-min.css"</span><span>/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;link&nbsp;type=<span class="string">"text/css"</span><span>&nbsp;rel=</span><span class="string">"stylesheet"</span><span>&nbsp;href=</span><span class="string">"primeui/aristo/theme.css"</span><span>/&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">        &lt;script type="text/javascript" src="primeui/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="primeui/primeui-0.9.6-min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="primeui/jquery-ui.js"&gt;&lt;/script&gt; 
+        <br/>
+        &lt;link type="text/css" rel="stylesheet" href="primeui/jquery-ui.css"/&gt;
+        &lt;link type="text/css" rel="stylesheet" href="primeui/primeui-0.9.6-min.css"/&gt;
+        &lt;link type="text/css" rel="stylesheet" href="primeui/aristo/theme.css"/&gt;
+        </textarea></div>
+        <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&lt;div&nbsp;id=</span><span class="string">"messages"</span><span>&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&lt;div&nbsp;id=<span class="string">"tblremote"</span><span>&gt;&lt;/div&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">        &lt;div id="messages"&gt;&lt;/div&gt;  
+                &lt;div id="tblremote"&gt;&lt;/div&gt;
+        </textarea></div>
+        <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>$(function()&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#tblremote'</span><span>).puidatatable({&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;caption:&nbsp;<span class="string">'Remote&nbsp;Restful&nbsp;Webservice'</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paginator:&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rows:&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'vin'</span><span>,&nbsp;headerText:&nbsp;</span><span class="string">'Vin'</span><span>,&nbsp;sortable:</span><span class="keyword">true</span><span>},&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'brand'</span><span>,&nbsp;headerText:&nbsp;</span><span class="string">'Brand'</span><span>,&nbsp;sortable:</span><span class="keyword">true</span><span>},&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'year'</span><span>,&nbsp;headerText:&nbsp;</span><span class="string">'Year'</span><span>,&nbsp;sortable:</span><span class="keyword">true</span><span>},&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'color'</span><span>,&nbsp;headerText:&nbsp;</span><span class="string">'Color'</span><span>,&nbsp;sortable:</span><span class="keyword">true</span><span>}&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasource:&nbsp;function(callback)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.ajax({&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="string">"GET"</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="string">'webresources/cars'</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataType:&nbsp;<span class="string">"json"</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;context:&nbsp;<span class="keyword">this</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success:&nbsp;function(response)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback.call(<span class="keyword">this</span><span>,&nbsp;response);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selectionMode:&nbsp;<span class="string">'multiple'</span><span>,&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rowSelect:&nbsp;function(event,&nbsp;data)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#messages'</span><span>).puigrowl(</span><span class="string">'show'</span><span>,&nbsp;[{severity:</span><span class="string">'info'</span><span>,&nbsp;summary:&nbsp;</span><span class="string">'Row&nbsp;Selected'</span><span>,&nbsp;detail:&nbsp;(data.brand&nbsp;+&nbsp;</span><span class="string">'&nbsp;'</span><span>&nbsp;+&nbsp;data.vin)}]);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rowUnselect:&nbsp;function(event,&nbsp;data)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#messages'</span><span>).puigrowl(</span><span class="string">'show'</span><span>,&nbsp;[{severity:</span><span class="string">'info'</span><span>,&nbsp;summary:&nbsp;</span><span class="string">'Row&nbsp;Unselected'</span><span>,&nbsp;detail:&nbsp;(data.brand&nbsp;+&nbsp;</span><span class="string">'&nbsp;'</span><span>&nbsp;+&nbsp;data.vin)}]);&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#messages'</span><span>).puigrowl();&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li class=""><span>});&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">            $(function() {  
+                $('#tblremote').puidatatable({  
+                    caption: 'Remote Restful Webservice',  
+                    paginator: {  
+                        rows: 5  
+                    },  
+                    columns: [  
+                        {field:'vin', headerText: 'Vin', sortable:true},  
+                        {field:'brand', headerText: 'Brand', sortable:true},  
+                        {field:'year', headerText: 'Year', sortable:true},  
+                        {field:'color', headerText: 'Color', sortable:true}  
+                    ],  
+                    datasource: function(callback) {  
+                        $.ajax({  
+                            type: "GET",  
+                            url: 'webresources/cars',  
+                            dataType: "json",  
+                            context: this,  
+                            success: function(response) {  
+                                callback.call(this, response);  
+                            }  
+                        });  
+                    },  
+                    selectionMode: 'multiple',  
+                    rowSelect: function(event, data) {  
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Selected', detail: (data.brand + ' ' + data.vin)}]);  
+                    },  
+                    rowUnselect: function(event, data) {  
+                        $('#messages').puigrowl('show', [{severity:'info', summary: 'Row Unselected', detail: (data.brand + ' ' + data.vin)}]);  
+                    }  
+                });  
+
+                $('#messages').puigrowl();  
+            });  </textarea></div>        
     </body>
 </html>

@@ -16,16 +16,14 @@
  */
 package javaone.con3638.primegobeyond;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.push.PushContext;
 import org.primefaces.push.PushContextFactory;
 
-@Named(value = "mapBean")
-@SessionScoped
+@ManagedBean
 public class MapBean implements Serializable {
 
     private MapModel emptyModel;
