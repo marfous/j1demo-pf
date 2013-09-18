@@ -13,12 +13,10 @@
         <script type="text/javascript">
             //<![CDATA[
             function handleMessage(data) {
-                alert('ok');
                 var coords = new google.maps.LatLng(data.lat, data.lng),
                         map = PF('map'),
                         marker = new google.maps.Marker({
-                    position: coords
-                    , title: data.title
+                        position: coords, title: data.title
                 });
 
                 map.addOverlay(marker);
@@ -60,7 +58,7 @@
 
             <br />
 
-            <p:gmap id="gmap" center="37.06250000000001,-95.67706800000002" zoom="5" type="HYBRID" style="width:600px;height:400px"
+            <p:gmap id="gmap" center="37.06250000000001,-95.67706800000002" zoom="15" type="HYBRID" style="width:600px;height:400px"
                     model="#{mapBean.emptyModel}" widgetVar="map" />
 
             <h:inputHidden id="lat" value="#{mapBean.lat}" />

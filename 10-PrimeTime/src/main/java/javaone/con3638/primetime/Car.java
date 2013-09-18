@@ -17,7 +17,6 @@
 package javaone.con3638.primetime;
 
 import java.io.Serializable;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Car implements Serializable {
