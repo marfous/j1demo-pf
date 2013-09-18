@@ -54,6 +54,7 @@ public class ThemeSwitcherBean implements Serializable {
         themes.put("Hot-Sneaks", "hot-sneaks");
         themes.put("Humanity", "humanity");
         themes.put("Le-Frog", "le-frog");
+        themes.put("Metro UI", "metroui");
         themes.put("Midnight", "midnight");
         themes.put("Mint-Choc", "mint-choc");
         themes.put("Overcast", "overcast");
@@ -71,5 +72,4 @@ public class ThemeSwitcherBean implements Serializable {
         themes.put("UI-Lightness", "ui-lightness");
         themes.put("Vader", "vader");
     }
-}
-                    
+}                    
