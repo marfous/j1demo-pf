@@ -13,12 +13,10 @@
         <script type="text/javascript">
             //<![CDATA[
             function handleMessage(data) {
-                alert('ok');
                 var coords = new google.maps.LatLng(data.lat, data.lng),
                         map = PF('map'),
                         marker = new google.maps.Marker({
-                    position: coords
-                    , title: data.title
+                        position: coords, title: data.title
                 });
 
                 map.addOverlay(marker);
@@ -60,7 +58,7 @@
 
             <br />
 
-            <p:gmap id="gmap" center="37.06250000000001,-95.67706800000002" zoom="5" type="HYBRID" style="width:600px;height:400px"
+            <p:gmap id="gmap" center="37.06250000000001,-95.67706800000002  " zoom="15" type="HYBRID" style="width:600px;height:400px"
                     model="#{mapBean.emptyModel}" widgetVar="map" />
 
             <h:inputHidden id="lat" value="#{mapBean.lat}" />
@@ -73,6 +71,65 @@
         <br/>
         <p:tabView>
             <p:tab title="xhtml">                 
+<div class="dp-highlighter"><div class="bar"><div class="tools"><a href="\#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="\#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="\#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="\#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=</span><span class="string">"text/javascript"</span><span>&nbsp;src=</span><span class="string">"http://maps.google.com/maps/api/js?sensor=true"</span><span>&gt;&lt;/script&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=<span class="string">"text/javascript"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&lt;![CDATA[</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;handleMessage(data)&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;coords&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;google.maps.LatLng(data.lat,&nbsp;data.lng),&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;=&nbsp;PF(<span class="string">'map'</span><span>),&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;marker&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;google.maps.Marker({&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;coords,&nbsp;title:&nbsp;data.title&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.addOverlay(marker);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.infowindow&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;google.maps.InfoWindow({&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content:&nbsp;<span class="string">'&lt;h3&gt;'</span><span>&nbsp;+&nbsp;data.title&nbsp;+&nbsp;</span><span class="string">"&nbsp;just&nbsp;checked&nbsp;in!&lt;/h3&gt;"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.getMap().setCenter(coords);&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.infowindow.open(map.getMap(),&nbsp;marker);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(function()&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigator.geolocation.getCurrentPosition(&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function(position)&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(PrimeFaces.escapeClientId(<span class="string">'form:lat'</span><span>)).val(position.coords.latitude);&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(PrimeFaces.escapeClientId(<span class="string">'form:lng'</span><span>)).val(position.coords.longitude);&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function(error)&nbsp;{&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(error.message);&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enableHighAccuracy:&nbsp;<span class="keyword">true</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//]]&gt;&nbsp;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&lt;/h:head&gt;&nbsp;&nbsp;</span></li><li class=""><span>&lt;h:body&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:form&nbsp;id=<span class="string">"form"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:fieldset&nbsp;legend=<span class="string">"Type&nbsp;in&nbsp;Your&nbsp;Location"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:panelGrid&nbsp;columns=<span class="string">"2"</span><span>&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:outputLabel&nbsp;<span class="keyword">for</span><span>=</span><span class="string">"title"</span><span>&nbsp;value=</span><span class="string">"Title:&nbsp;"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:inputText&nbsp;id=<span class="string">"title"</span><span>&nbsp;value=</span><span class="string">"\#{mapBean.title}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:spacer&nbsp;/&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:commandButton&nbsp;value=<span class="string">"Check-In"</span><span>&nbsp;actionListener=</span><span class="string">"\#{mapBean.checkin}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h:panelGrid&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p:fieldset&gt;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:gmap&nbsp;id=<span class="string">"gmap"</span><span>&nbsp;center=</span><span class="string">"37.06250000000001,-95.67706800000002&nbsp;&nbsp;"</span><span>&nbsp;zoom=</span><span class="string">"15"</span><span>&nbsp;type=</span><span class="string">"HYBRID"</span><span>&nbsp;style=</span><span class="string">"width:600px;height:400px"</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model=<span class="string">"\#{mapBean.emptyModel}"</span><span>&nbsp;widgetVar=</span><span class="string">"map"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:inputHidden&nbsp;id=<span class="string">"lat"</span><span>&nbsp;value=</span><span class="string">"\#{mapBean.lat}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h:inputHidden&nbsp;id=<span class="string">"lng"</span><span>&nbsp;value=</span><span class="string">"\#{mapBean.lng}"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h:form&gt;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p:socket&nbsp;onMessage=<span class="string">"handleMessage"</span><span>&nbsp;channel=</span><span class="string">"/check-in"</span><span>&nbsp;/&gt;&nbsp;&nbsp;</span></span></li></ol><textarea style="display:none;" class="originalCode">        &lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"&gt;&lt;/script&gt;
+
+        &lt;script type="text/javascript"&gt;
+            //&lt;![CDATA[
+            function handleMessage(data) {
+                var coords = new google.maps.LatLng(data.lat, data.lng),
+                        map = PF('map'),
+                        marker = new google.maps.Marker({
+                        position: coords, title: data.title
+                });
+
+                map.addOverlay(marker);
+
+                map.infowindow = new google.maps.InfoWindow({
+                    content: '&lt;h3&gt;' + data.title + " just checked in!&lt;/h3&gt;"
+                });
+
+                map.getMap().setCenter(coords);
+                map.infowindow.open(map.getMap(), marker);
+            }
+
+            $(function() {
+                navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            $(PrimeFaces.escapeClientId('form:lat')).val(position.coords.latitude);
+                            $(PrimeFaces.escapeClientId('form:lng')).val(position.coords.longitude);
+                        },
+                        function(error) {
+                            alert(error.message);
+                        },
+                        {
+                            enableHighAccuracy: true
+                        });
+            });
+            //]]&gt; 
+        &lt;/script&gt;
+    &lt;/h:head&gt;
+    &lt;h:body&gt;
+        &lt;h:form id="form"&gt;
+            &lt;p:fieldset legend="Type in Your Location"&gt;
+                &lt;h:panelGrid columns="2"&gt;
+                    &lt;p:outputLabel for="title" value="Title: " /&gt;
+                    &lt;p:inputText id="title" value="\#{mapBean.title}" /&gt;
+                    &lt;p:spacer /&gt;
+                    &lt;p:commandButton value="Check-In" actionListener="\#{mapBean.checkin}" /&gt;
+                &lt;/h:panelGrid&gt;
+            &lt;/p:fieldset&gt;
+
+            &lt;br /&gt;
+
+            &lt;p:gmap id="gmap" center="37.06250000000001,-95.67706800000002  " zoom="15" type="HYBRID" style="width:600px;height:400px"
+                    model="\#{mapBean.emptyModel}" widgetVar="map" /&gt;
+
+            &lt;h:inputHidden id="lat" value="\#{mapBean.lat}" /&gt;
+            &lt;h:inputHidden id="lng" value="\#{mapBean.lng}" /&gt;
+
+        &lt;/h:form&gt;
+
+        &lt;p:socket onMessage="handleMessage" channel="/check-in" /&gt;</textarea></div>                
             </p:tab>
             <p:tab title="Bean">                
                 <div class="dp-highlighter"><div class="bar"><div class="tools"><a href="#" onclick="dp.sh.Toolbar.Command('ViewSource',this);return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard',this);return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource',this);return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About',this);return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;MapBean&nbsp;implements&nbsp;Serializable&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;checkin()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PushContext&nbsp;pushContext&nbsp;=&nbsp;PushContextFactory.getDefault().getPushContext();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushContext.push(<span class="string">"/check-in"</span><span>,&nbsp;</span><span class="keyword">new</span><span>&nbsp;CheckIn(title,&nbsp;lat,&nbsp;lng));&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;</span></li><li class="alt"><span>}&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">public class MapBean implements Serializable {

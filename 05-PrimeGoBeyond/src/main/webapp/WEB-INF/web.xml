@@ -41,10 +41,7 @@
     <servlet>
         <servlet-name>Push Servlet</servlet-name>
         <servlet-class>org.primefaces.push.PushServlet</servlet-class>
-        <init-param>
-            <param-name>org.atmosphere.websocket.maxTextMessageSize</param-name>
-            <param-value>0</param-value>
-        </init-param>
+        <async-supported>true</async-supported>
     </servlet>
 
     <servlet-mapping>
