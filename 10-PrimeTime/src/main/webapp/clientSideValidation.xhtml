@@ -14,7 +14,7 @@
             <p:messages autoUpdate="true"/>
             <p:tooltip />
             
-            <p:panel header="New Car" style="width: 90%">
+            <p:panel id="panel" header="New Car" style="width: 90%">
                 <h:panelGrid id="grid" columns="3" cellpadding="5">
                     <h:outputLabel for="model" value="Model:" style="font-weight:bold"/>					
                     <p:inputText id="model" value="#{tableBean.newCar.model}" required="true" label="Name"/>
@@ -34,7 +34,9 @@
                     <p:inputText id="color" value="#{tableBean.newCar.color}" label="Color" />
                     <p:message for="color" display="text" />
 
-                    <p:commandButton id="emptyList" value="Empty List" icon="ui-icon-closethick" process="@this" update="carsTable" actionListener="#{tableBean.emptyList}" />
+                    <p:commandButton id="emptyList" value="Empty List" icon="ui-icon-closethick" process="@this" update="carsTable" actionListener="#{tableBean.emptyList}">
+                       <p:ajax update="panel" resetValues="true" />  
+                    </p:commandButton>
                     <p:commandButton id="save" value="Save with Non-Ajax" icon="ui-icon-check" validateClient="true" ajax="false" actionListener="#{tableBean.saveCar}" />
                 </h:panelGrid>
             </p:panel>
@@ -157,13 +159,13 @@
                             return false;">view plain</a><a href="#" onclick="dp.sh.Toolbar.Command('CopyToClipboard', this);
                             return false;">copy to clipboard</a><a href="#" onclick="dp.sh.Toolbar.Command('PrintSource', this);
                             return false;">print</a><a href="#" onclick="dp.sh.Toolbar.Command('About', this);
-                            return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Car&nbsp;implements&nbsp;Serializable&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;model;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;year;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;manufacturer;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;@NotNull&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;color;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">public class Car implements Serializable {
+                            return false;">?</a></div></div><ol start="1" class="dp-cpp"><li class="alt"><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Car&nbsp;implements&nbsp;Serializable&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;model;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="datatypes">int</span><span>&nbsp;year;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;manufacturer;&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;@Size(min = 2, max = 5)&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;color;&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;</span></li><li class=""><span>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol><textarea style="display:none;" class="originalCode">public class Car implements Serializable {
 
                         public String model;
                         public int year;
                         public String manufacturer;
 
-                        @NotNull
+                        @Size(min = 2, max = 5)
                         public String color;
                         ...
                     }	</textarea></div>                    
