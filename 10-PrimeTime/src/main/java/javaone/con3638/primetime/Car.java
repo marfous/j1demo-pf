@@ -25,7 +25,7 @@ public class Car implements Serializable {
     public int year;
     public String manufacturer;
     
-    @Size(min = 2)
+    @Size(min = 2, max = 5)
     public String color;
     
     public int price;
